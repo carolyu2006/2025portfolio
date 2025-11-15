@@ -1,20 +1,20 @@
 const express = require('express');
-
-const parser = require ('body-parser');
+const parser = require('body-parser');
 const encodedparser = parser.urlencoded({extended: true});
-
-const multer = require ('multer');
-const uploadProcessor = multer({ dest: 'public/uploads/' });
+const multer = require('multer');
+const path = require('path');
 
 const app = express();
 
-app.use(express.static('public'));
+// Set views directory
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
+
+// Serve static files
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(encodedparser);
 
-let posts = [];
-let postIdCounter = 1;
-
+// Routes
 app.get('/', (request, response) => {
     response.render('index');
 });
@@ -52,9 +52,6 @@ app.get('/projects/games', (request, response) => {
     response.render('projects/games');
 });
 
-// Only listen if not in Vercel environment
-if (require.main === module) {
-    app.listen(4000, () => {
-        console.log("server has started at http://127.0.0.1:4000");
-    });
-}
+// Export the app for Vercel
+module.exports = app;
+

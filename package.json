@@ -1,4 +1,10 @@
 {
+  "name": "2025portfolio",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
