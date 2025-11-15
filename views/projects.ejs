@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Projects</title>
+    <link rel="icon" type="image/png" href="/assets/images/main/logo.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/projects.css">
+</head>
+
+<body>
+    <%- include('components/header.ejs') %>
+
+        <div class="main-content">
+            <div class="content">
+                <%- include('components/sidebar.ejs') %>
+
+                    <!-- <div class="head">
+                <h1>Projects</h1>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web-apps">Web & Apps</button>
+                    <button class="filter-btn" data-filter="games">Games</button>
+                </div>
+            </div> -->
+
+                    <div class="project-container">
+
+
+                        <section class="project-item" id="interTabs" onclick="window.location.href='/projects/intertabs'">
+                            <div class="project-item-container">
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">interTabs</h2>
+                                <h3>Product designer & Frontend Developer</h3>
+                                <p>An AI-powered Chrome Extension that manage tabs.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/intertabs.png"
+                                    alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #FFB0A3;">
+                                <p>HTML / CSS</p>
+                                <p>JavaScript</p>
+                                <p>Figma</p>
+                                <p>Adobe After Effects</p>
+                            </div>
+                        </section>
+
+                        <section class="project-item" id="mbtiIdealPartner"
+                            onclick="window.location.href='/projects/mbtiidealpartner'">
+                            <div class="project-item-container">
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">MBTI Ideal Partner</h2>
+                                <h3>Product designer & Full Stack Developer</h3>
+                                <p>An interactive Wechat Mini Program that helps users find their ideal MBTI partner.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/mbti.png" alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #F6ACB4;">
+                                <p>WXML / WXSS</p>
+                                <p>JavaScript</p>
+                                <p>Figma</p>
+                                <p>Adobe Illustrator</p>
+                            </div>
+                        </section>
+
+                        <section class="project-item" id="paletteU">
+                            <div class="project-item-container">
+                                <span class="coming-soon-badge">Coming Soon</span>
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">Palette U</h2>
+                                <h3>Product designer & Full Stack Developer</h3>
+                                <p>A website to record your memories and store them in your 3D memory palace.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/paletteu.png"
+                                    alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #FFC0A0;">
+                                <p>HTML / CSS</p>
+                                <p>JavaScript</p>
+                                <p>Figma</p>
+                                <p>Express.js</p>
+                                <p>Three.js</p>
+                                <p>SQL</p>
+                                <p>Blender</p>
+                            </div>
+                        </section>
+
+                        <section class="project-item" id="albertPlus">
+                            <div class="project-item-container">
+                                <span class="coming-soon-badge">Coming Soon</span>
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">Albert Plus</h2>
+                                <h3>UIUX Designer & Developer</h3>
+                                <p>The next-generation companion for NYU's Albert course registration system with better user experience and features.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/albertplus.png" alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #A38CF4;">
+                                <p>HTML / CSS</p>
+                                <p>JavaScript</p>
+                                <p>Figma</p>
+                                <p>Adobe After Effects</p>
+                            </div>
+                        </section>
+
+                        <section class="project-item" id="globalDeltaSecurities" onclick="window.location.href='https://globaldeltasecurities.com/'">
+                            <div class="project-item-container">
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">Global Delta Securities</h2>
+                                <h3>Frontend Developer</h3>
+                                <p>Set up the frontend for the website from scratch, using Next.js, for the Finance startup company.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/gds.png" alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #437BAC;">
+                                <p>Next.js</p>
+                                <p>React</p>
+                                <p>TypeScript</p>
+                                <p>CSS</p>
+                            </div>
+                        </section>
+
+                        <section class="project-item" id="sweetDreams" onclick="window.location.href='https://sweetdreams4all.org/'">
+                            <div class="project-item-container">
+                                <h4>2025</h4>
+                                <h2 class="project-item-title">Sweet Dreams 4 All</h2>
+                                <h3>Frontend Developer & Designer</h3>
+                                <p>Developed the website from scratch using HTML, CSS, and JavaScript for the 501(c)(3) non-profit organization.</p>
+
+                                <img class="project-item-image" src="/assets/images/covers/sweetdreams.png" alt="project-item-1">
+                            </div>
+                            <div class="project-item-side" style="border-left: 4px solid #DCADFB;">
+                                <p>HTML / CSS</p>
+                                <p>JavaScript</p>
+                                <p>Figma</p>
+                            </div>
+                        </section>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <%- include('components/footer.ejs') %>
+
+            <script src="/js/script.js"></script>
+            <script src="/js/projects.js"></script>
+</body>
+
+</html>

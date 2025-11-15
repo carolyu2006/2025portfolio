@@ -1,0 +1,62 @@
+body {
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content h1 {
+    margin-bottom: 80px;
+}
+
+.main-content {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 0 var(--margin-x);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 180px;
+}
+
+.play-container {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.play-item-wrapper {
+    background-color: var(--color-foreground);
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    break-inside: avoid;
+    position: relative;
+    cursor: pointer;
+}
+
+.play-item {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.play-item-wrapper:hover {
+    cursor: pointer;
+}
+
+.play-item-wrapper.swipe.swipe-left:hover .play-item {
+    transform: translateX(100%);
+}
+
+.play-item-wrapper.swipe.swipe-right:hover .play-item {
+    transform: translateX(-100%);
+}
+
+.play-item-wrapper.swipe.swipe-up:hover .play-item {
+    transform: translateY(100%);
+}
+
+.play-item-wrapper.swipe.swipe-down:hover .play-item {
+    transform: translateY(-100%);
+}

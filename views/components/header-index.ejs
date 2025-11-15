@@ -1,0 +1,57 @@
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-left">
+            <a href="/" class="header-link">
+                <img class="logo light" src="/assets/icons/yu.svg" alt="logo">
+                <img class="logo dark" src="/assets/icons/yu-dark.svg" alt="logo">
+                <h1 class="header-title">CAROL YU</h1>
+            </a>
+        </div>
+
+        <div class="header-middle">
+            <a href="#project">PROJECTS</a>
+            <!-- <a href="#games">GAMES</a> -->
+
+            <a href="#play">PLAY</a>
+            <a href="#about">ABOUT</a>
+        </div>
+
+        <div class="header-right">
+            <button onclick="toggleMenu()" class="menu-button header-link" style="justify-content: flex-end;">
+                <!-- <h1 class="header-title" style="z-index: -10;">MENU</h1>
+                <img class="menu-button-icon" style="z-index: -10;" src="/assets/icons/menu.svg" alt="menu"> -->
+                <h1 class="header-title">MENU</h1>
+                <img class="menu-button-icon light" src="/assets/icons/menu.svg" alt="menu">
+                <img class="menu-button-icon dark" src="/assets/icons/menu-dark.svg" alt="menu">
+            </button>
+        </div>
+    </div>
+    <div id="menu-dropdown" class="menu-dropdown">
+        <div class="menu-dropdown-content">
+            <img class="menu-dropdown-icon" src="/assets/icons/no.svg" alt="menu" onclick="closeMenu()"
+                style="cursor: pointer;">
+
+            <div class="menu-dropdown-content-links-container">
+                <div class="menu-dropdown-content-links">
+                    <a href="/">HOME</a>
+                    <a href="/projects">PROJECTS</a>
+                    <!-- <a href="/games">GAMES</a> -->
+                    <a href="/play">PLAYGROUND</a>
+                    <a href="/about">ABOUT</a>
+                </div>
+
+                <div class="menu-dropdown-content-contact-container">
+                    <a class="menu-dropdown-content-contact" href="mailto:CAROL.YU@NYU.EDU">CAROL.YU@NYU.EDU</a>
+                    <a class="menu-dropdown-content-contact"
+                        href="https://www.linkedin.com/in/hanfei-carol-yu/">LINKEDIN</a>
+                    <!-- <a>GITHUB</a> -->
+                    <a class="menu-dropdown-content-contact" href="https://www.instagram.com/carollyuuu/">INSTAGRAM</a>
+                </div>
+            </div>
+            <div>
+                <img class="menu-bottom" src="/assets/images/main/menu-bottom.svg" alt="" onclick="closeMenu()"
+                    style="cursor: pointer;">
+            </div>
+        </div>
+    </div>
+</header>
