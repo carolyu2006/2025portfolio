@@ -22,13 +22,13 @@
     --color-white: #fff;
 
 
-    --color-gray: #595959;
-    --color-gray-light: #d9d9d9;
+    --color-gray: #656565;
+    --color-gray-light: #979797;
 
-    --color-primary-dark: #d6636d;
-
+    --color-primary-dark: #e2737c;
+    --color-primary-dark2: #f29aa1;
     --color-primary: #FFB3B9;
-    --color-primary-light: #FFDADD;
+    --color-primary-light: #ffe1e3;
     --color-green-primary: #A5C796;
     --color-green-secondary: #76A164;
 
@@ -84,6 +84,7 @@
 
 html {
     background-color: var(--color-background);
+    overflow-x: hidden;
 }
 
 body {
