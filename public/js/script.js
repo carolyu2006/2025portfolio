@@ -60,21 +60,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursor);
 
     // Track mouse movement
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    // Initialize to center of viewport
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
     let hoverTimeout = null;
+
+    // Set initial cursor position
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
-    // Smooth cursor follow
+    // Smooth cursor follow with better responsiveness
     function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.1;
-        cursorY += (mouseY - cursorY) * 0.1;
+        // Use a higher easing factor for better responsiveness
+        const ease = 0.15;
+        cursorX += (mouseX - cursorX) * ease;
+        cursorY += (mouseY - cursorY) * ease;
         cursor.style.left = cursorX + 'px';
         cursor.style.top = cursorY + 'px';
         requestAnimationFrame(animateCursor);
