@@ -98,6 +98,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (current.tagName === 'BUTTON') {
                 return true;
             }
+            // Check if it's a social icon
+            if (current.classList && current.classList.contains('social-icon')) {
+                return true;
+            }
+            // Check if it's a footer email
+            if (current.classList && current.classList.contains('footer-email')) {
+                return true;
+            }
+            // Check if it's a head email (about page)
+            if (current.classList && current.classList.contains('head-email')) {
+                return true;
+            }
             // Check if it's in header
             if (current.tagName === 'HEADER' || 
                 (current.classList && current.classList.contains('main-header')) ||
@@ -186,6 +198,95 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         setHoverState(false);
+    });
+});
+
+// Social icon typewriter effect and icon shifting
+document.addEventListener('DOMContentLoaded', () => {
+    const socialIcons = document.querySelectorAll('.social-icon');
+    
+    // Create label spans and set up typewriter effect
+    socialIcons.forEach((icon) => {
+        const label = icon.getAttribute('aria-label');
+        if (label) {
+            const labelSpan = document.createElement('span');
+            labelSpan.className = 'social-icon-label';
+            labelSpan.setAttribute('data-full-text', label);
+            icon.appendChild(labelSpan);
+            
+            let typewriterTimeout = null;
+            let currentText = '';
+            
+            icon.addEventListener('mouseenter', () => {
+                // Clear any existing timeout
+                if (typewriterTimeout) {
+                    clearTimeout(typewriterTimeout);
+                }
+                
+                // Reset text
+                currentText = '';
+                labelSpan.textContent = '';
+                labelSpan.style.opacity = '1';
+                
+                // Shift icons to the right
+                const container = icon.closest('.footer-social-icons') || icon.closest('.head-social-icons');
+                if (container) {
+                    const icons = Array.from(container.querySelectorAll('.social-icon'));
+                    const currentIndex = icons.indexOf(icon);
+                    
+                    // Calculate the width needed for the label
+                    // Temporarily set full text to measure
+                    labelSpan.textContent = label;
+                    labelSpan.style.opacity = '1';
+                    const labelWidth = labelSpan.offsetWidth;
+                    labelSpan.textContent = '';
+                    
+                    // Shift subsequent icons
+                    icons.forEach((otherIcon, otherIndex) => {
+                        if (otherIndex > currentIndex) {
+                            otherIcon.style.transition = 'transform 0.3s ease';
+                            otherIcon.style.transform = `translateX(${labelWidth + 10}px)`;
+                        }
+                    });
+                }
+                
+                // Typewriter effect
+                const fullText = label;
+                let charIndex = 0;
+                
+                const typeChar = () => {
+                    if (charIndex < fullText.length) {
+                        currentText += fullText[charIndex];
+                        labelSpan.textContent = currentText;
+                        charIndex++;
+                        typewriterTimeout = setTimeout(typeChar, 50); // 50ms per character
+                    }
+                };
+                
+                typeChar();
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                // Clear typewriter
+                if (typewriterTimeout) {
+                    clearTimeout(typewriterTimeout);
+                }
+                
+                // Reset label
+                labelSpan.textContent = '';
+                labelSpan.style.opacity = '0';
+                
+                // Reset icon positions
+                const container = icon.closest('.footer-social-icons') || icon.closest('.head-social-icons');
+                if (container) {
+                    const icons = container.querySelectorAll('.social-icon');
+                    icons.forEach(otherIcon => {
+                        otherIcon.style.transition = 'transform 0.3s ease';
+                        otherIcon.style.transform = 'translateX(0)';
+                    });
+                }
+            });
+        }
     });
 });
 

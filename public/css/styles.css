@@ -807,11 +807,13 @@ footer h4 {
     max-width: 380px;
 }
 
-.footer-social-icons {
+.footer-social-icons,
+.head-social-icons {
     display: flex;
     flex-direction: row;
     gap: 10px;
     /* margin-top: 15px; */
+    transition: transform 0.3s ease;
 }
 
 .social-icon {
@@ -819,16 +821,56 @@ footer h4 {
     align-items: center;
     justify-content: center;
     color: var(--color-black);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
 }
 
 .social-icon:hover {
     opacity: 0.7;
 }
 
-.social-icon svg {
+.social-icon svg,
+.social-icon img {
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.social-icon-label {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-family: 'Gabarito', sans-serif;
+    font-size: 14px;
+    color: var(--color-black);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10000;
+    background-color: transparent;
+    min-width: 0;
+    overflow: visible;
+    transition: opacity 0.2s ease;
+}
+
+/* White label for about page (dark background) */
+.head-item-image-container .social-icon-label,
+.head-social-icons .social-icon-label {
+    color: var(--color-white);
+}
+
+
+
+.social-icon:hover ~ .social-icon {
+    transform: translateX(0);
+}
+
+/* Shift icons to the right when a previous icon is hovered */
+.footer-social-icons:hover .social-icon:not(:hover),
+.head-social-icons:hover .social-icon:not(:hover) {
+    transform: translateX(0);
 }
 
 .footer-image {

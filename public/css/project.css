@@ -158,6 +158,12 @@ section h2 {
     width: 100%;
 }
 
+.overview-accomplishments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .overview-content-container {
     display: flex;
     flex-direction: column;
