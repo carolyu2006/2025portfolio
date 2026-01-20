@@ -4,7 +4,7 @@ const parser = require ('body-parser');
 const encodedparser = parser.urlencoded({extended: true});
 
 const multer = require ('multer');
-const uploadProcessor = multer({ dest: 'public/uploads/' });
+// const uploadProcessor = multer({ dest: 'public/uploads/' });
 
 const app = express();
 
