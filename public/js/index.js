@@ -121,6 +121,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Video fallback: if a project video fails to load, show its poster image instead
+    const projectVideos = document.querySelectorAll('.projects-item video');
+
+    projectVideos.forEach(video => {
+        const poster = video.getAttribute('poster');
+        if (!poster) return;
+
+        let replaced = false;
+
+        const replaceWithImage = () => {
+            if (replaced) return;
+            replaced = true;
+
+            const img = document.createElement('img');
+            img.src = poster;
+            img.alt = video.getAttribute('alt') || 'project preview';
+            img.className = video.className;
+
+            video.replaceWith(img);
+        };
+
+        // If the video errors (no source / unsupported), fall back to image
+        video.addEventListener('error', replaceWithImage);
+
+        // Safety timeout: if the video never loads, fall back after a short delay
+        const timeoutId = setTimeout(() => {
+            if (video.readyState === 0 || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+                replaceWithImage();
+            }
+        }, 3000);
+
+        // If the video loads successfully, cancel the timeout
+        video.addEventListener('loadeddata', () => {
+            clearTimeout(timeoutId);
+        });
+    });
+
     // Filter functionality
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
