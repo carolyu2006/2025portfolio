@@ -48,6 +48,10 @@ app.get('/projects/mbtiidealpartner', (request, response) => {
     response.render('projects/mbtiidealpartner');
 });
 
+app.get('/projects/everstream', (request, response) => {
+    response.render('projects/everstream');
+});
+
 app.get('/projects/games', (request, response) => {
     response.render('projects/games');
 });

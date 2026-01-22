@@ -211,7 +211,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    background-color: var(--color-primary-light);
+    /* background-color: var(--color-primary-light); */
+    background: linear-gradient(160deg, var(--color-primary-light), var(--color-background));
     height: calc(100% - 80px);
 }
 

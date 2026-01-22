@@ -113,6 +113,10 @@ iframe {
     width: 100%;
 }
 
+.button {
+    width: 100%;
+}
+
 .key-info {
     display: flex;
     flex-direction: row;
@@ -378,8 +382,29 @@ section h2 {
 
 }
 
+.two-column-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+.two-column-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
-
+.one-column-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.one-column-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
 
 .next-project-section {
     margin-top: 80px;
