@@ -48,9 +48,13 @@ app.get('/projects/mbtiidealpartner', (request, response) => {
     response.render('projects/mbtiidealpartner');
 });
 
-app.get('/projects/games', (request, response) => {
-    response.render('projects/games');
+app.get('/projects/everstream', (request, response) => {
+    response.render('projects/everstream');
 });
+
+// app.get('/projects/games', (request, response) => {
+//     response.render('projects/games');
+// });
 
 // Export the app for Vercel
 module.exports = app;
