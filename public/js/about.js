@@ -1,98 +1,122 @@
-// Flip Cards functionality for About page
+// Measurements aligned with about.css (.interests-container { top: 120px }, etc.)
+const STICKY_TOP = 120;
+const START_DELAY = 0.1; // Start animation at 10% through the scroll
+const END_DELAY = 1.0; // End animation at 100% (extends the visible range)
+
 document.addEventListener('DOMContentLoaded', function() {
-    const flipCards = document.querySelectorAll('.flip-card');
+    const scrollWrapper = document.querySelector('.interests-scroll-wrapper');
+    const interestsContainer = document.querySelector('.interests-container');
+    const scrollContent = document.querySelector('.interests-scroll-content');
+    const interestItem = document.querySelector('.interest-item');
     
-    if (flipCards.length === 0) return; // Only run on pages with flip cards
-    
-    let currentCardIndex = 0;
-    let flipInterval;
-    let imageIntervals = [];
-    let hoveredCards = new Set();
-    
-    // Initialize image switching for each card with random intervals
-    function initImageSwitching() {
-        flipCards.forEach((card) => {
-            const images = card.querySelectorAll('.card-image');
-            if (images.length <= 1) return;             
-            let currentImageIndex = 0;
-            let timeoutId;
-            
-            // Function to switch to next image with random delay
-            function switchImage() {
-                // Don't switch images if card is hovered
-                if (hoveredCards.has(card)) {
-                    // If hovered, check again after a short delay
-                    timeoutId = setTimeout(switchImage, 500);
-                    return;
-                }
-                
-                images[currentImageIndex].classList.remove('active');
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                images[currentImageIndex].classList.add('active');
-                
-                const randomInterval =  Math.random() * 8000;
-                timeoutId = setTimeout(switchImage, randomInterval);
-            }
-            
-            // Start with random initial delay for each card (0-3 seconds)
-            const initialDelay = Math.random() * 8000;
-            timeoutId = setTimeout(switchImage, initialDelay);
-            
-            imageIntervals.push(timeoutId);
-        });
+    if (!scrollWrapper || !interestsContainer || !scrollContent || !interestItem) {
+        console.log('Interest elements not found');
+        return;
     }
     
-    // Auto-flip cards in sequence
-    function startAutoFlip() {
-        flipInterval = setInterval(() => {
-            // Reset previous card if not hovered
-            const prevCard = flipCards[currentCardIndex];
-            if (!hoveredCards.has(prevCard)) {
-                prevCard.classList.remove('flipped');
-            }
-            
-            // Move to next card
-            currentCardIndex = (currentCardIndex + 1) % flipCards.length;
-            const nextCard = flipCards[currentCardIndex];
-            
-            // Only auto-flip if not hovered
-            if (!hoveredCards.has(nextCard)) {
-                // Flip current card
-                setTimeout(() => {
-                    if (!hoveredCards.has(nextCard)) {
-                        nextCard.classList.add('flipped');
-                    }
-                }, 100);
-                
-                // Flip it back after showing the back
-                setTimeout(() => {
-                    if (!hoveredCards.has(nextCard)) {
-                        nextCard.classList.remove('flipped');
-                    }
-                }, 2500);
-            }
-        }, 4000); // Flip a new card every 4 seconds
-    }
+    let maxScroll = 0;
+    let imagesLoaded = false;
     
-    // Track hover state to pause auto-flip and image switching
-    flipCards.forEach((card) => {
-        card.addEventListener('mouseenter', function() {
-            hoveredCards.add(this);
-            // Remove auto-flip class when user hovers (CSS handles the flip)
-            this.classList.remove('flipped');
+    function calculateMaxScroll() {
+        const images = interestItem.querySelectorAll('img');
+        maxScroll = 0;
+        
+        images.forEach(img => {
+            const imgWidth = img.offsetWidth || img.clientWidth;
+            const marginRight = parseInt(window.getComputedStyle(img).marginRight) || 0;
+            maxScroll += imgWidth + marginRight;
         });
         
-        card.addEventListener('mouseleave', function() {
-            hoveredCards.delete(this);
-            // CSS will handle removing the flip on mouse leave
+        // Add extra padding to ensure last image is fully visible
+        maxScroll = Math.max(0, maxScroll - window.innerWidth + 300);
+        imagesLoaded = true;
+        console.log('Max scroll calculated:', maxScroll, 'px');
+    }
+    
+    const images = interestItem.querySelectorAll('img');
+    let loadedCount = 0;
+    const totalImages = images.length;
+    
+    function maybeRunCalculate() {
+        if (loadedCount >= totalImages) {
+            setTimeout(calculateMaxScroll, 100);
+        }
+    }
+    
+    if (totalImages === 0) {
+        calculateMaxScroll();
+    } else {
+        images.forEach(img => {
+            if (img.complete) {
+                loadedCount++;
+            } else {
+                img.addEventListener('load', function() {
+                    loadedCount++;
+                    maybeRunCalculate();
+                });
+                img.addEventListener('error', function() {
+                    loadedCount++;
+                    maybeRunCalculate();
+                });
+            }
         });
+        if (loadedCount >= totalImages) {
+            setTimeout(calculateMaxScroll, 100);
+        }
+        setTimeout(function() {
+            if (!imagesLoaded) calculateMaxScroll();
+        }, 1500);
+    }
+    
+    function updateHorizontalScroll() {
+        const wrapperRect = scrollWrapper.getBoundingClientRect();
+        const wrapperTop = wrapperRect.top;
+        const wrapperHeight = wrapperRect.height;
+        const viewportHeight = window.innerHeight;
+        const denominator = wrapperHeight - (viewportHeight - STICKY_TOP);
+        
+        let scrollDistance = 0;
+        
+        // Only animate when wrapper is in sticky range
+        if (imagesLoaded && maxScroll > 0 && denominator > 0) {
+            const isInView = wrapperTop <= STICKY_TOP && (wrapperTop + wrapperHeight) > viewportHeight;
+            
+            if (isInView) {
+                // Raw progress from 0 to 1
+                const rawProgress = (STICKY_TOP - wrapperTop) / denominator;
+                
+                // Apply start and end delays - animation maps from START_DELAY to END_DELAY
+                const delayedProgress = Math.max(0, Math.min(1, 
+                    (rawProgress - START_DELAY) / (END_DELAY - START_DELAY)
+                ));
+                
+                scrollDistance = delayedProgress * maxScroll;
+            } else if (wrapperTop + wrapperHeight <= viewportHeight) {
+                // Past the end - keep at max scroll to prevent jumping
+                scrollDistance = maxScroll;
+            }
+        }
+        
+        scrollContent.style.transform = `translateY(-50%) translateX(-${scrollDistance}px)`;
+    }
+    
+    // Throttle scroll for better performance
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateHorizontalScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
     });
     
-    // Start image switching
-    initImageSwitching();
+    window.addEventListener('resize', () => {
+        calculateMaxScroll();
+        updateHorizontalScroll();
+    });
     
-    // Start auto-flip after initial delay
-    setTimeout(() => {
-        startAutoFlip();
-    }, 2000);
+    // Initial call after a short delay
+    setTimeout(updateHorizontalScroll, 200);
 });

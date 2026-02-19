@@ -15,12 +15,12 @@ section {
 
     width: calc(1024px - 2 * var(--margin-x));
     margin: var(--margin-y) auto;
-    margin-top: 180px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 100px;
+    /* gap: 100px; */
     text-align: left;
 }
 
@@ -187,6 +187,7 @@ section {
 
 .skills-section {
     position: relative;
+    margin-top: 140px;
 }
 
 .skill-container {
@@ -239,22 +240,143 @@ section {
 
 .more-about-section {
     width: 100%;
+    margin-top: 100px;
+}
+
+.interests-scroll-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    will-change: transform;
+}
+
+.interests-scroll-content h1 {
+    flex-shrink: 0;
+    margin: 0;
+    padding-bottom: 0;
 }
 
 .interests-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-top: 30px;
-    width: 100%;
+    position: sticky;
+    top: 120px;
+    width: 100vw;
+    height: calc(90vh - 120px);
+    min-height: 400px;
+}
+
+.interests-scroll-wrapper {
+    padding-bottom: 100px;
+    height: 250vh;
+    /* min-height: 300vh; */
+    position: relative;
 }
 
 .interest-item {
-    padding: 0;
-    background-color: transparent;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    /* min-height: 300px; */
+}
+
+.interest-item img {
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    height: 380px;
+    width: auto;
+}
+
+/* Leaf images */
+.interest-item img[alt="leaf"] {
+    width: 150px;
+    /* height: 620px; */
+    object-fit: contain;
+    margin-top: 200px;
+}
+
+/* Flower images */
+.interest-item img[alt="flower"] {
+    width: 90px;
+    object-fit: contain;
+    margin-top: 220px;
+}
+
+/* Different margin-top and margin-right for each image */
+.interest-item img:nth-child(1) {
+    margin-top: 0px;
+    margin-right: 30px;
+}
+
+.interest-item img:nth-child(2) {
+    margin-top: -80px;
+    margin-right: 40px;
+}
+
+.interest-item img:nth-child(3) {
+    margin-top: 60px;
+    margin-right: 35px;
+}
+
+.interest-item img:nth-child(4) {
+    margin-top: -40px;
+    margin-right: 25px;
+}
+
+.interest-item img:nth-child(5) {
+    margin-top: 100px;
+    margin-right: 45px;
+}
+
+.interest-item img:nth-child(6) {
+    margin-top: -60px;
+    margin-right: 30px;
+}
+
+.interest-item img:nth-child(7) {
+    margin-top: 40px;
+    margin-right: 50px;
+}
+
+.interest-item img:nth-child(8) {
+    margin-top: -90px;
+    margin-right: 35px;
+}
+
+.interest-item img:nth-child(9) {
+    margin-top: 70px;
+    margin-right: 40px;
+}
+
+.interest-item img:nth-child(10) {
+    margin-top: -50px;
+    margin-right: 30px;
+}
+
+.interest-item img:nth-child(11) {
+    margin-top: 80px;
+    margin-right: 45px;
+}
+
+.interest-item img:nth-child(12) {
+    margin-top: -70px;
+    margin-right: 35px;
+}
+
+.interest-item img:nth-child(13) {
+    margin-top: 50px;
+    margin-right: 30px;
+}
+
+/* Leaf and flower: 200px top (override nth-child) */
+.interest-item img[alt="leaf"],
+.interest-item img[alt="flower"] {
+    margin-top: 200px;
 }
 
 .interest-images {
@@ -270,51 +392,6 @@ section {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 4px;
-}
-
-/* Adjust grid for different numbers of images */
-.interest-item:nth-child(1) .interest-images {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.interest-item:nth-child(2) .interest-images {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.interest-item:nth-child(3) .interest-images {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.interest-item:nth-child(4) .interest-images {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-}
-
-.interest-item:nth-child(4) .interest-images img {
-    aspect-ratio: 3 / 2;
-}
-
-.interest-item:nth-child(5) .interest-images {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.interest-item:nth-child(6) .interest-images {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.interest-item:nth-child(7) .interest-images {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.interest-item:nth-child(8) .interest-images {
-    grid-template-columns: repeat(5, 1fr);
-}
-
-.interest-item h3 {
-    font-size: 20px;
-    font-family: 'ArchivoBlack', sans-serif;
-    margin: 0;
-    color: var(--color-black);
 }
 
 .interest-item p {

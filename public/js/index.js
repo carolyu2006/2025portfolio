@@ -14,13 +14,13 @@ window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     
     leaves.forEach((leaf, index) => {
-        const speeds = [.2,.3,.45,.4,.55, .7];
+        const speeds = [.2,.2,.3,.3,.4,.5];
         // const speeds = [.2,.3,.5,.8,.9,.99];
         const speed = speeds[index];
         const rotation = rotations[index];
         
         const yPos = +(scrolled * speed);
-        const rotate = (scrolled * .08)+rotation;
+        const rotate = (scrolled * .2)+rotation;
         leaf.style.transform = `translateY(${yPos}px) rotate(${rotate}deg)`;
     });
 });

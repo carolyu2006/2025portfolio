@@ -77,8 +77,8 @@
                                 <p>Original Music & Art by me</p>
                             </div>
                             <video class="projects-item-image" src="/assets/images/covers/everstream.mov"
-                            poster="/assets/images/covers/everstream.png" autoplay muted loop playsinline
-                            preload="metadata">
+                                poster="/assets/images/covers/everstream.png" autoplay muted loop playsinline
+                                preload="metadata">
                             </video>
                         </div>
                         <div class="projects-item-container">
@@ -89,7 +89,8 @@
                                     <h2 class="project-item-title">interTabs</h2>
                                     <h3>Product designer & Frontend Developer</h3>
                                     <p>An AI-powered Chrome Extension that manage tabs.</p>
-                                    <p style="color: var(--color-green-primary);">HOF Hack 2025 1st Place & Best UI/UX</p>
+                                    <p style="color: var(--color-green-primary);">HOF Hack 2025 1st Place & Best UI/UX
+                                    </p>
                                 </div>
                                 <img src="/assets/images/covers/intertabs.png" alt="projects-item-1">
                             </div>
@@ -111,6 +112,19 @@
                         </div>
 
                         <div class="projects-item" data-category="web-apps"
+                            onclick="window.location.href='https://devpost.com/software/dreamail'">
+                            <div class="projects-item-content">
+                                <h4>2026</h4>
+                                <h2 class="project-item-title">DREAMMAIL</h2>
+                                <h3>Designer & Developer</h3>
+                                <p>A spatial AR interface for everyday digital tools, powered by AI-driven interaction.
+                                </p>
+                                <p style="color: var(--color-green-primary);">MIT Reality Hack 2026</p>
+                            </div>
+                            <img class="projects-item-image" src="/assets/images/covers/dreamail.png"
+                                alt="projects-item-1">
+                        </div>
+                        <div class="projects-item" data-category="web-apps"
                             onclick="window.location.href='https://albertplus.com/'">
                             <div class="projects-item-content">
                                 <h4>2025</h4>
@@ -125,29 +139,7 @@
                             <img class="projects-item-image" src="/assets/images/covers/albertplus.png"
                                 alt="projects-item-1">
                         </div>
-                        <div class="projects-item" data-category="web-apps"
-                            onclick="window.location.href='https://sweetdreams4all.org/'">
-                            <div class="projects-item-content">
-                                <h4>2025</h4>
-                                <h2 class="project-item-title">Sweet Dreams 4 All</h2>
-                                <h3>Frontend Developer & Designer</h3>
-                                <p>Developed the website from scratch using HTML, CSS, and JavaScript for the 501(c)(3)
-                                    non-profit organization.</p>
-                            </div>
-                            <img class="projects-item-image" src="/assets/images/covers/sweetdreams.png"
-                                alt="projects-item-1">
-                        </div>
-                        <div class="projects-item" data-category="web-apps"
-                            onclick="window.location.href='https://globaldeltasecurities.com/'">
-                            <div class="projects-item-content">
-                                <h4>2025</h4>
-                                <h2 class="project-item-title">Global Delta Securities</h2>
-                                <h3>Frontend Developer</h3>
-                                <p>Set up the frontend for the website from scratch, using Next.js, for the Finance
-                                    startup company.</p>
-                            </div>
-                            <img class="projects-item-image" src="/assets/images/covers/gds.png" alt="projects-item-1">
-                        </div>
+
 
                     </div>
                 </section>
@@ -193,7 +185,8 @@
                                 playsinline preload="metadata"></video>
                         </div>
                         <div class="play-item-wrapper" onclick="window.location.href='https://youtu.be/Bqjvh_u7IWU'">
-                            <video class="play-item" src="/assets/images/play/musicLooper.mp4" alt="MusicLooper" autoplay muted loop playsinline preload="metadata"></video>
+                            <video class="play-item" src="/assets/images/play/musicLooper.mp4" alt="MusicLooper"
+                                autoplay muted loop playsinline preload="metadata"></video>
                         </div>
                         <div class="play-item-wrapper" onclick="window.location.href='https://youtu.be/2VhsPX2RgJA'">
                             <video class="play-item" src="/assets/images/play/zelda.mp4" alt="Zelda" autoplay muted loop
@@ -207,7 +200,8 @@
                                 autoplay muted playsinline></video>
                         </div>
                         <div class="play-item-wrapper">
-                            <video class="play-item" src="/assets/images/play/EchoesOfOurStep.mov" alt="EchoesOfOurStep" autoplay muted loop playsinline preload="metadata"></video>
+                            <video class="play-item" src="/assets/images/play/EchoesOfOurStep.mov" alt="EchoesOfOurStep"
+                                autoplay muted loop playsinline preload="metadata"></video>
                         </div>
                         <div class="play-item-wrapper" onclick="window.location.href='https://youtu.be/AuA6fwoRjjc'">
                             <video class="play-item" src="/assets/images/play/TheInvisibleLoop.mp4"
@@ -249,8 +243,23 @@
                         </div>
                     </div>
                 </section>
+                <!-- <section class="games-section" id="games" onclick="window.location.href='/games'">
+                    <div class="content-header">
+                        <h1>Experience</h1>
+                        <button onclick="window.location.href='/experience'" class="project-item-button"
+                            id="leaf-decoration-button">All Experience</button>
+                        <img class="leaf-decoration" src="/assets/images/main/lotus-leaf.svg" alt="">
+                    </div>
+                    <
+
+                    <img class="games-item-image" src="/assets/images/projects/intertabs/cover.mov" alt="project-item-1"
+                        autoplay muted loop playsinline preload="metadata"></video>
+                </section> -->
+
             </div>
         </div>
+
+
 
         <%- include('components/footer.ejs') %>
 
