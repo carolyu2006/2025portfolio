@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     animateCursor();
 
-    // Function to check if element is within excluded areas (header, footer, sidebar)
+    // Function to check if element is within excluded areas (header, footer, sidebar, certain blocks)
     function isInExcludedArea(element) {
         if (!element) return false;
         
@@ -108,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // Check if it's a head email (about page)
             if (current.classList && current.classList.contains('head-email')) {
+                return true;
+            }
+            // Exclude About page social links block
+            if (current.classList && current.classList.contains('head-social-links')) {
                 return true;
             }
             // Check if it's in header

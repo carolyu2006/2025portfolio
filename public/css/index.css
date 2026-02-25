@@ -423,6 +423,64 @@ section {
     display: block;
 }
 
+/* Experience List Styles */
+.experience-list {
+    width: 100%;
+    margin-top: 60px;
+    padding: 0 40px;
+}
+
+.experience-list h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: var(--color-foreground);
+}
+
+.experience-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.experience-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.experience-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-foreground);
+}
+
+.experience-date {
+    font-size: 14px;
+    color: var(--color-gray);
+    font-weight: 400;
+}
+
+.experience-role {
+    font-size: 16px;
+    color: var(--color-gray);
+    margin: 0;
+    font-weight: 400;
+}
+
 
 .head-email h1 {
     font-size: 24px;
@@ -513,6 +571,22 @@ section {
 
     .about-item-content {
         padding: 0 20px;
+    }
+
+    .experience-list {
+        padding: 0 20px;
+    }
+
+    .experience-header h3 {
+        font-size: 18px;
+    }
+
+    .experience-date {
+        font-size: 12px;
+    }
+
+    .experience-role {
+        font-size: 14px;
     }
 
     section {

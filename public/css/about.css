@@ -6,6 +6,10 @@ section {
     /* margin-bottom: 30px; */
 }
 
+#about, #experience, #community, #outside-design, #skills {
+    scroll-margin-top: 140px;
+}
+
 .main-content {
     margin: 0;
 }
@@ -102,7 +106,7 @@ section {
 
 .head-description {
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     /* color: var(--color-gray); */
 }
 
@@ -132,7 +136,7 @@ section {
 }
 
 .education-label {
-    padding-left: 40px;
+    /* padding-left: 40px; */
     width: 110px;
 }
 
@@ -140,6 +144,31 @@ section {
     display: flex;
     flex-direction: column;
     gap: 3px;
+}
+
+.head-social-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: 8px 50px;
+    align-items: center;
+}
+
+.head-social-links a {
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--color-foreground);
+}
+
+.head-social-links svg,
+.head-social-links img {
+    width: 20px;
+    height: 20px;
+}
+
+.head-social-links a:hover {
+    color: var(--color-primary-dark);
+    /* text-decoration: underline; */
 }
 
 .highlight {
@@ -184,10 +213,153 @@ section {
     font-weight: 600;
 }
 
+/* Work Experience Section - Card Layout */
+.work-experience-section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.work-experience-section h1 {
+    margin-bottom: 40px;
+}
+
+.work-experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 100%;
+}
+
+.work-card {
+    border: 2px solid var(--color-foreground);
+    padding: 24px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    margin-top: 100px;
+}
+
+a.work-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.work-card:hover {
+    background-color: var(--color-foreground);
+}
+
+.work-card:hover h3,
+.work-card:hover .work-role,
+.work-card:hover .work-date {
+    color: var(--color-background);
+}
+
+.work-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    gap: 15px;
+}
+
+.work-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-foreground);
+}
+
+.work-date {
+    font-size: 13px;
+    color: var(--color-gray);
+    white-space: nowrap;
+}
+
+.work-role {
+    font-size: 15px;
+    color: var(--color-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Community Section - Timeline Layout */
+.community-section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.community-section h1 {
+    margin-bottom: 40px;
+}
+
+.community-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 3px solid var(--color-foreground);
+    padding-left: 0;
+}
+
+.community-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0 20px 30px;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.community-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 28px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: var(--color-foreground);
+    border: 3px solid var(--color-background);
+}
+
+.community-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+a.community-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.community-content {
+    flex: 1;
+}
+
+.community-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: var(--color-foreground);
+}
+
+.community-role {
+    font-size: 15px;
+    color: var(--color-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.community-date {
+    font-size: 13px;
+    color: var(--color-gray);
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
 
 .skills-section {
     position: relative;
-    margin-top: 140px;
+    margin-top: 80px;
 }
 
 .skill-container {
@@ -240,7 +412,7 @@ section {
 
 .more-about-section {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 
 .interests-scroll-content {
@@ -408,6 +580,49 @@ section {
 
     .experience-item h2 {
         font-size: 24px;
+    }
+
+    /* Work Experience Mobile */
+    .work-experience-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .work-card {
+        padding: 20px;
+    }
+
+    .work-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        /* margin-top: 100px; */
+    }
+
+    .work-date {
+        font-size: 12px;
+    }
+
+    /* Community Mobile */
+    .community-timeline {
+        border-left-width: 2px;
+    }
+
+    .community-item {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px 0 16px 24px;
+    }
+
+    .community-item::before {
+        width: 11px;
+        height: 11px;
+        left: -7px;
+        top: 22px;
+    }
+
+    .community-date {
+        margin-left: 0;
     }
 
     .interests-container {

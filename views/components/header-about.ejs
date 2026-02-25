@@ -1,25 +1,35 @@
-<header class="main-header" style="background-color: transparent;">
-    <div class="header-container" style="background-color: transparent;">
-        <div class="header-left" >
-            <a href="/" class="header-link">
-                <!-- <img class="logo light" style="filter: invert(1);" src="/assets/icons/yu.svg" alt="logo"> -->
-                <img  src="/assets/icons/yu-dark.svg" alt="logo">
-                <h1 class="header-title" style="color: var(--color-background);">CAROL YU</h1>
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-left" onclick="window.location.href='/'">
+            <a href="#about" class="header-link">
+                <img class="logo light" src="/assets/icons/yu.svg" alt="logo">
+                <img class="logo dark" src="/assets/icons/yu-dark.svg" alt="logo">
+                <h1 class="header-title">CAROL YU</h1>
             </a>
+        </div>
+
+        <div class="header-middle">
+            <a href="#about">ABOUT</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#community">COMMUNITY</a>
+            <a href="#outside-design">OUTSIDE DESIGN</a>
+            <a href="#skills">SKILLS</a>
         </div>
 
         <div class="header-right">
             <button onclick="toggleMenu()" class="menu-button header-link" style="justify-content: flex-end;">
                 <!-- <h1 class="header-title" style="z-index: -10;">MENU</h1>
                 <img class="menu-button-icon" style="z-index: -10;" src="/assets/icons/menu.svg" alt="menu"> -->
-                <h1 class="header-title" style="color: var(--color-background);">CONTACT</h1>
-                <img src="/assets/icons/menu-dark.svg" alt="menu">
+                <h1 class="header-title">CONTACT</h1>
+                <img class="menu-button-icon light" src="/assets/icons/menu.svg" alt="menu">
+                <img class="menu-button-icon dark" src="/assets/icons/menu-dark.svg" alt="menu">
             </button>
         </div>
     </div>
     <div id="menu-dropdown" class="menu-dropdown">
         <div class="menu-dropdown-content">
-            <img class="menu-dropdown-icon" src="/assets/icons/no.svg" alt="menu" onclick="closeMenu()" style="cursor: pointer;">
+            <img class="menu-dropdown-icon" src="/assets/icons/no.svg" alt="menu" onclick="closeMenu()"
+                style="cursor: pointer;">
 
             <div class="menu-dropdown-content-links-container">
                 <div class="menu-dropdown-content-links">
@@ -39,7 +49,8 @@
                 </div>
             </div>
             <div>
-                <img class="menu-bottom" src="/assets/images/main/menu-bottom.svg" alt="" onclick="closeMenu()" style="cursor: pointer;">
+                <img class="menu-bottom" src="/assets/images/main/menu-bottom.svg" alt="" onclick="closeMenu()"
+                    style="cursor: pointer;">
             </div>
         </div>
     </div>

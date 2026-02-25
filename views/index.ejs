@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <%- include('components/header-index.ejs') %>
+    <%- include('components/header-new.ejs') %>
         <div class="main-content">
 
             <div id="hero" class="hero">
@@ -52,6 +52,21 @@
                         <img class="leaf-decoration" src="/assets/images/main/lotus-leaf.svg" alt="">
                     </div>
                     <div class="projects-container">
+                        
+                        <div class="projects-item-container">
+                            <div class="projects-item" data-category="web-apps"
+                                onclick="window.location.href='/projects/intertabs'">
+                                <div class="projects-item-content">
+                                    <h4>2025</h4>
+                                    <h2 class="project-item-title">interTabs</h2>
+                                    <h3>Product designer & Frontend Developer</h3>
+                                    <p>An AI-powered Chrome Extension that manage tabs.</p>
+                                    <p style="color: var(--color-green-primary);">HOF Hack 2025 1st Place & Best UI/UX
+                                    </p>
+                                </div>
+                                <img src="/assets/images/covers/intertabs.png" alt="projects-item-1">
+                            </div>
+                        </div>
                         <div class="projects-item" data-category="web-apps"
                             onclick="window.location.href='/projects/paletteu'">
                             <div class="projects-item-content">
@@ -81,20 +96,6 @@
                                 preload="metadata">
                             </video>
                         </div>
-                        <div class="projects-item-container">
-                            <div class="projects-item" data-category="web-apps"
-                                onclick="window.location.href='/projects/intertabs'">
-                                <div class="projects-item-content">
-                                    <h4>2025</h4>
-                                    <h2 class="project-item-title">interTabs</h2>
-                                    <h3>Product designer & Frontend Developer</h3>
-                                    <p>An AI-powered Chrome Extension that manage tabs.</p>
-                                    <p style="color: var(--color-green-primary);">HOF Hack 2025 1st Place & Best UI/UX
-                                    </p>
-                                </div>
-                                <img src="/assets/images/covers/intertabs.png" alt="projects-item-1">
-                            </div>
-                        </div>
 
                         <div class="projects-item" data-category="web-apps"
                             onclick="window.location.href='/projects/mbtiidealpartner'">
@@ -112,19 +113,6 @@
                         </div>
 
                         <div class="projects-item" data-category="web-apps"
-                            onclick="window.location.href='https://devpost.com/software/dreamail'">
-                            <div class="projects-item-content">
-                                <h4>2026</h4>
-                                <h2 class="project-item-title">DREAMMAIL</h2>
-                                <h3>Designer & Developer</h3>
-                                <p>A spatial AR interface for everyday digital tools, powered by AI-driven interaction.
-                                </p>
-                                <p style="color: var(--color-green-primary);">MIT Reality Hack 2026</p>
-                            </div>
-                            <img class="projects-item-image" src="/assets/images/covers/dreamail.png"
-                                alt="projects-item-1">
-                        </div>
-                        <div class="projects-item" data-category="web-apps"
                             onclick="window.location.href='https://albertplus.com/'">
                             <div class="projects-item-content">
                                 <h4>2025</h4>
@@ -139,6 +127,21 @@
                             <img class="projects-item-image" src="/assets/images/covers/albertplus.png"
                                 alt="projects-item-1">
                         </div>
+
+                        <div class="projects-item" data-category="web-apps"
+                            onclick="window.location.href='https://devpost.com/software/dreamail'">
+                            <div class="projects-item-content">
+                                <h4>2026</h4>
+                                <h2 class="project-item-title">DREAMMAIL</h2>
+                                <h3>Designer & Developer</h3>
+                                <p>A spatial AR interface for everyday digital tools, powered by AI-driven interaction.
+                                </p>
+                                <p style="color: var(--color-green-primary);">MIT Reality Hack 2026</p>
+                            </div>
+                            <img class="projects-item-image" src="/assets/images/covers/dreamail.png"
+                                alt="projects-item-1">
+                        </div>
+                        
 
 
                     </div>
@@ -243,18 +246,6 @@
                         </div>
                     </div>
                 </section>
-                <!-- <section class="games-section" id="games" onclick="window.location.href='/games'">
-                    <div class="content-header">
-                        <h1>Experience</h1>
-                        <button onclick="window.location.href='/experience'" class="project-item-button"
-                            id="leaf-decoration-button">All Experience</button>
-                        <img class="leaf-decoration" src="/assets/images/main/lotus-leaf.svg" alt="">
-                    </div>
-                    <
-
-                    <img class="games-item-image" src="/assets/images/projects/intertabs/cover.mov" alt="project-item-1"
-                        autoplay muted loop playsinline preload="metadata"></video>
-                </section> -->
 
             </div>
         </div>
