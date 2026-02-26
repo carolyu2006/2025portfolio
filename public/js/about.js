@@ -1,3 +1,15 @@
+// Community section — expand/collapse (whole row clickable)
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.community-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            if (e.target.closest('.community-detail')) return;
+            var btn = this.querySelector('.community-expand');
+            var isExpanded = this.classList.toggle('expanded');
+            if (btn) btn.setAttribute('aria-expanded', isExpanded);
+        });
+    });
+});
+
 // Measurements aligned with about.css (.interests-container { top: 120px }, etc.)
 const STICKY_TOP = 120;
 const START_DELAY = 0.1; // Start animation at 10% through the scroll

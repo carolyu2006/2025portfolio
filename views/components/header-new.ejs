@@ -9,11 +9,11 @@
         </div>
 
         <div class="header-middle">
-            <a href="/">WORK</a>
+            <a href="/#project" class="nav-link nav-link--work">WORK</a>
             <!-- <a href="#games">GAMES</a> -->
 
-            <a href="/play">PLAY</a>
-            <a href="/about">ABOUT</a>
+            <a href="/play" class="nav-link">PLAY</a>
+            <a href="/about" class="nav-link">ABOUT</a>
         </div>
 
         <div class="header-right">
@@ -75,4 +75,25 @@
             </div>
         </div>
     </div>
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            document.querySelectorAll('.header-middle .nav-link').forEach(function (link) {
+                var href = link.getAttribute('href');
+                if (href === path || (href === '/' && (path === '/' || path === '')) || (href === '/#project' && (path === '/' || path === ''))) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Header background gradually appears over first 200px of scroll
+            var header = document.querySelector('.main-header');
+            var scrollRange = 200;
+            function updateHeaderBg() {
+                var opacity = Math.min(1, window.pageYOffset / scrollRange);
+                header.style.setProperty('--header-bg-opacity', opacity);
+            }
+            updateHeaderBg();
+            window.addEventListener('scroll', updateHeaderBg, { passive: true });
+        })();
+    </script>
 </header>

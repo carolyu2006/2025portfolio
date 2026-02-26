@@ -56,7 +56,7 @@
 .work-card {
     position: relative;
     overflow: visible;
-    padding: 24px;
+    padding: 24px 28px;
     background-color: transparent;
     z-index: 1;
     margin-top: 160px;
@@ -246,6 +246,7 @@ a.work-card {
     display: block;
     text-decoration: none;
     color: inherit;
+    height: 50px;
 }
 
 .work-card:hover h3,
@@ -298,50 +299,74 @@ a.work-card {
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-left: 3px solid var(--color-foreground);
-    padding-left: 0;
 }
 
 .community-item {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 20px 0 20px 30px;
+    padding: 20px 24px;
     position: relative;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.community-item::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 28px;
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-    background-color: var(--color-foreground);
-    border: 3px solid var(--color-background);
+    transition: color 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
 }
 
 .community-item:hover {
-    background-color: rgba(0, 0, 0, 0.03);
+    color: var(--color-background);
+    background-color: var(--color-foreground);
 }
 
-a.community-item {
-    text-decoration: none;
-    color: inherit;
+.community-item:hover .community-content h3,
+.community-item:hover .community-role {
+    color: var(--color-background);
+}
+
+.community-item:hover .community-description,
+.community-item:hover .community-description a {
+    color: var(--color-background);
+}
+
+/* Expanded: no background/text invert on hover */
+.community-item.expanded:hover {
+    color: var(--color-foreground);
+    background-color: transparent;
+}
+
+.community-item.expanded:hover .community-content h3 {
+    color: var(--color-foreground);
+}
+
+.community-item.expanded:hover .community-role {
+    color: var(--color-gray);
+}
+
+.community-item.expanded:hover .community-description,
+.community-item.expanded:hover .community-description a {
+    color: var(--color-foreground);
+}
+
+.community-item.expanded:hover .community-expand {
+    color: var(--color-foreground);
+}
+
+.community-item.expanded .community-content h3,
+.community-item.expanded .community-role {
+    color: var(--color-foreground);
 }
 
 .community-content {
     flex: 1;
+    min-width: 0;
 }
 
 .community-content h3 {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     margin: 0 0 6px 0;
     color: var(--color-foreground);
+    transition: color 0.25s ease;
 }
 
 .community-role {
@@ -349,13 +374,105 @@ a.community-item {
     color: var(--color-gray);
     margin: 0;
     line-height: 1.4;
+    transition: color 0.25s ease;
 }
 
-.community-date {
-    font-size: 13px;
-    color: var(--color-gray);
-    white-space: nowrap;
-    margin-left: 20px;
+.community-expand {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    margin-left: 16px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--color-foreground);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.community-item:hover .community-expand {
+    color: var(--color-background);
+}
+
+.community-expand-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+    position: relative;
+}
+
+.community-expand-icon::before,
+.community-expand-icon::after {
+    content: '';
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.25s ease;
+}
+
+.community-expand-icon::before {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+}
+
+.community-expand-icon::after {
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    margin-top: -1px;
+}
+
+.community-item.expanded .community-expand-icon::before {
+    transform: rotate(90deg);
+}
+
+.community-item.expanded .community-expand-icon::after {
+    transform: scaleX(0);
+}
+
+.community-detail {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.community-item.expanded .community-detail {
+    max-height: 800px;
+}
+
+.community-description {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-foreground);
+    margin: 16px 0 12px 0;
+    padding-top: 4px;
+}
+
+.community-description a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.community-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.community-images img {
+    max-width: 100%;
+    height: auto;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 /* =========================================

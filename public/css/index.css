@@ -46,7 +46,7 @@ section {
 
 .hero-side {
     position: absolute;
-    top: 18%;
+    top: 20%;
     left: calc(50% - 175px - 150px);
     align-items: left;
     justify-content: left;
@@ -56,6 +56,38 @@ section {
     padding-left: 10px;
     border-left: 4px solid var(--color-primary);
     width: 150px;
+}
+
+.hero-side-right {
+    position: absolute;
+    top: 54%;
+    left: calc(50% + 140px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 10px;
+    width: 150px;
+}
+
+.hero-side-right > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-side-right p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.hero-side-image {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .hero-side-title {
@@ -104,7 +136,6 @@ section {
     height: 200px;
     top: 41%;
     left: 31%;
-    transform: rotate(110deg);
 }
 
 .leaf-2 {
@@ -116,7 +147,6 @@ section {
     border-radius: 50%;
     top: 45%;
     left: 22%;
-    transform: rotate(180deg);
 }
 
 .leaf-3 {
@@ -124,7 +154,6 @@ section {
     height: 68px;
     top: 40%;
     left: 26%;
-    transform: rotate(160deg);
 }
 
 .leaf-4 {
@@ -132,7 +161,6 @@ section {
     height: 70px;
     top: 31%;
     right: 19%;
-    transform: rotate(-134deg);
     background-image: url('../assets/images/main/lotus-leaf-2.svg');
 }
 
@@ -141,7 +169,6 @@ section {
     height: 95px;
     top: 23%;
     right: 21%;
-    transform: rotate(165deg);
 }
 
 .leaf-6 {
@@ -149,7 +176,6 @@ section {
     height: 70px;
     top: 0%;
     left: 12%;
-    transform: rotate(305deg);
 }
 
 .content {
@@ -167,6 +193,8 @@ section {
 
 #project {
     margin-bottom: 0;
+    margin-top: 20px;
+    scroll-margin-top: 100px;
 }
 
 .content-header {
