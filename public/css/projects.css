@@ -147,6 +147,7 @@ section {
 }
 
 .project-item-container {
+    display: block;
     min-width: 640px;
     position: relative;
     overflow: hidden;

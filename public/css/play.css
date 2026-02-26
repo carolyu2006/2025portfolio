@@ -34,6 +34,7 @@ p {
 }
 
 .play-item-wrapper {
+    display: block;
     background-color: var(--color-foreground);
     width: 100%;
     margin-bottom: 20px;

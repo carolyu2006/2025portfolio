@@ -1,51 +1,48 @@
 // Main script file
 
-function toggleMenu() {
+function openMenu() {
     const dropdown = document.getElementById('menu-dropdown');
+    if (!dropdown) return;
+    if (_menuCloseTimeout) {
+        clearTimeout(_menuCloseTimeout);
+        _menuCloseTimeout = null;
+    }
     dropdown.classList.remove('menu-closing');
-    dropdown.classList.toggle('menu-open');
+    dropdown.classList.add('menu-open');
 }
 
 function closeMenu() {
     const dropdown = document.getElementById('menu-dropdown');
+    if (!dropdown) return;
     if (dropdown.classList.contains('menu-open')) {
         dropdown.classList.add('menu-closing');
         dropdown.classList.remove('menu-open');
-        // Wait for animation to complete before hiding
         setTimeout(() => {
             dropdown.classList.remove('menu-closing');
-        }, 1000);
+        }, 600);
     }
 }
 
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const dropdown = document.getElementById('menu-dropdown');
-    const menuButton = document.querySelector('.menu-button');
-    
-    if (dropdown && menuButton && !dropdown.contains(event.target) && !menuButton.contains(event.target)) {
-        if (dropdown.classList.contains('menu-open')) {
-            dropdown.classList.add('menu-closing');
-            dropdown.classList.remove('menu-open');
-            setTimeout(() => {
-                dropdown.classList.remove('menu-closing');
-            }, 600);
-        }
-    }
-});
+let _menuCloseTimeout = null;
 
-// Close menu when clicking on a link
-document.querySelectorAll('.menu-dropdown-content a').forEach(link => {
-    link.addEventListener('click', function() {
-        const dropdown = document.getElementById('menu-dropdown');
-        if (dropdown.classList.contains('menu-open')) {
-            dropdown.classList.add('menu-closing');
-            dropdown.classList.remove('menu-open');
-            setTimeout(() => {
-                dropdown.classList.remove('menu-closing');
-            }, 600);
-        }
-    });
+function scheduleCloseMenu() {
+    _menuCloseTimeout = setTimeout(() => {
+        closeMenu();
+        _menuCloseTimeout = null;
+    }, 120);
+}
+
+// Hover-based open/close
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.querySelector('.menu-button');
+    const dropdown = document.getElementById('menu-dropdown');
+
+    if (menuButton && dropdown) {
+        menuButton.addEventListener('mouseenter', openMenu);
+        menuButton.addEventListener('mouseleave', scheduleCloseMenu);
+        dropdown.addEventListener('mouseenter', openMenu);
+        dropdown.addEventListener('mouseleave', scheduleCloseMenu);
+    }
 });
 
 // Custom Cursor

@@ -1,0 +1,360 @@
+/* =========================================
+   Legacy Experience Item Styles
+   ========================================= */
+.experience-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.experience-item-description {
+    color: var(--color-foreground);
+    width: calc(100% - 140px - 150px);
+}
+
+.experience-item-date {
+    color: var(--color-gray);
+    width: 150px;
+    text-align: right;
+}
+
+.experience-item {
+    background-color: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.experience-item-title {
+    color: var(--color-foreground);
+    width: 140px;
+    font-weight: 600;
+}
+
+/* =========================================
+   Work Experience Section — Card Layout
+   ========================================= */
+.work-experience-section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.work-experience-section h1 {
+    margin-bottom: 40px;
+}
+
+.work-experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.work-card {
+    position: relative;
+    overflow: visible;
+    padding: 24px;
+    background-color: transparent;
+    z-index: 1;
+    margin-top: 160px;
+}
+
+/* White background + border — sits above images (z-index:-1) but below text (z-index:1) */
+.work-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-foreground);
+    z-index: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.work-card:hover::before {
+    background-color: var(--color-foreground);
+}
+
+/* Text content must be above the ::before layer */
+.work-card-header,
+.work-role {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   Work Card — Floating Images
+   ========================================= */
+.work-card-img {
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+/* Nook: phone screenshots peeking from bottom-left, partly covered by card */
+.work-card-img--nook-behind {
+    width: 230px;
+    bottom: 30px;
+    top: auto;
+    left: calc(50% - 95px);
+    z-index: -1;
+}
+
+/* Nook: mascot floats on the right, in front */
+.work-card-img--nook-front {
+    width: 80px;
+    top: -50px;
+    left: calc(50% + 50px);
+    z-index: 1;
+    transform: rotate(0deg);
+}
+
+.work-card--nook {
+    margin-bottom: 90px;
+}
+
+.work-card--nook:hover .work-card-img--nook-behind {
+    transform: rotate(-4deg) translateY(-6px);
+}
+
+.work-card--nook:hover .work-card-img--nook-front {
+    transform: rotate(8deg) translateY(0px);
+}
+
+/* PaiBox: torus wireframe peeking top-left */
+/* PaiBox: phone mockup peeking from top-right */
+.work-card-img--paibox {
+    width: 160px;
+    bottom: 10px;
+    left: calc(50% - 60px);
+    z-index: 1;
+    transform: rotate(0deg);
+}
+
+.work-card--paibox:hover .work-card-img--paibox {
+    transform: rotate(4deg) translateY(-6px);
+}
+
+.work-card-img--paibox-back {
+    width: 300px;
+    top: -110px;
+    left: calc(50% - 110px);
+    z-index: -1;
+    transform: rotate(-0deg);
+}
+
+.work-card--paibox:hover .work-card-img--paibox-back {
+    transform: rotate(-6deg) translateY(-6px);
+}
+
+/* SuperRent: phone mockup peeking top-right */
+.work-card-img--superrent {
+    width: 120px;
+    bottom: 140px;
+    left: calc(50% - 130px);
+    z-index: -1;
+    transform: rotate(0deg);
+}
+
+.work-card--superrent:hover .work-card-img--superrent {
+    transform: rotate(-6deg) translateY(0px);
+}
+
+.work-card-img--superrent2 {
+    width: 190px;
+    bottom: 145px;
+    left: calc(50% + 0px);
+    z-index: -1;
+    transform: rotate(0deg);
+    border-radius: 6px;
+}
+
+.work-card--superrent:hover .work-card-img--superrent2 {
+    transform: rotate(6deg) translateY(0px);
+}
+
+.work-card-img--superrent3 {
+    width: 220px;
+    bottom: 105px;
+    left: calc(50% - 90px);
+    z-index: -2;
+    transform: rotate(0deg);
+    border-radius: 10px;
+}
+
+.work-card--superrent:hover .work-card-img--superrent3 {
+    transform: rotate(0deg) translateY(-6px);
+}
+
+/* Tech X Academy: event photos peeking top-left */
+.work-card-img--xa {
+    width: 200px;
+    bottom: 105px;
+    left: calc(50% - 10px);
+    z-index: -1;
+    transform: rotate(0deg);
+}
+
+.work-card--xa:hover .work-card-img--xa {
+    transform: rotate(5deg) translateY(0px);
+}
+
+.work-card-img--xa2 {
+    width: 200px;
+    bottom: 105px;
+    left: calc(50% - 190px);
+    z-index: -1;
+    transform: rotate(0deg);
+    border-radius: 6px;
+}
+
+.work-card--xa:hover .work-card-img--xa2 {
+    transform: rotate(-5deg) translateY(0px);
+}
+
+/* Global Delta Securities: website screenshot peeking top-right */
+.work-card-img--gds {
+    width: 250px;
+    bottom: 96px;
+    left: calc(50% - 125px);
+    z-index: -1;
+    transform: rotate(0deg);
+    border-radius: 6px 6px 0 0;
+}
+
+.work-card--gds:hover .work-card-img--gds {
+    transform: rotate(0deg) translateY(8px);
+}
+
+/* Sweet Dreams 4 All: layered website screenshots peeking top-left */
+.work-card-img--sweetdreams {
+    width: 250px;
+    bottom: 96px;
+    left: calc(50% - 125px);
+    z-index: -1;
+    transform: rotate(0deg);
+    border-radius: 6px 6px 0 0;
+}
+
+.work-card--sweetdreams:hover .work-card-img--sweetdreams {
+    transform: rotate(0deg) translateY(8px);
+}
+
+a.work-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 50px;
+}
+
+.work-card:hover h3,
+.work-card:hover .work-role,
+.work-card:hover .work-date {
+    color: var(--color-background);
+}
+
+.work-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    gap: 15px;
+}
+
+.work-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-foreground);
+}
+
+.work-date {
+    font-size: 13px;
+    color: var(--color-gray);
+    white-space: nowrap;
+}
+
+.work-role {
+    font-size: 15px;
+    color: var(--color-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* =========================================
+   Community Section — Timeline Layout
+   ========================================= */
+.community-section {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.community-section h1 {
+    margin-bottom: 40px;
+}
+
+.community-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 3px solid var(--color-foreground);
+    padding-left: 0;
+}
+
+.community-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0 20px 30px;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.community-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 28px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: var(--color-foreground);
+    border: 3px solid var(--color-background);
+}
+
+.community-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+a.community-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.community-content {
+    flex: 1;
+}
+
+.community-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: var(--color-foreground);
+}
+
+.community-role {
+    font-size: 15px;
+    color: var(--color-gray);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.community-date {
+    font-size: 13px;
+    color: var(--color-gray);
+    white-space: nowrap;
+    margin-left: 20px;
+}
