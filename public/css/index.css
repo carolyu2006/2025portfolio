@@ -344,6 +344,11 @@ section {
     cursor: pointer;
 }
 
+a.play-item-wrapper {
+    display: block;
+    margin-bottom: 20px;
+}
+
 .play-item-wrapper.swipe {
     background-color: var(--color-foreground);
 }
