@@ -246,7 +246,6 @@ a.work-card {
     display: block;
     text-decoration: none;
     color: inherit;
-    height: 50px;
 }
 
 .work-card:hover h3,
@@ -357,4 +356,22 @@ a.community-item {
     color: var(--color-gray);
     white-space: nowrap;
     margin-left: 20px;
+}
+
+/* =========================================
+   Responsive — Work Experience Cards
+   ========================================= */
+@media (max-width: 768px) {
+    .work-experience-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .work-card {
+        margin-top: 100px;
+    }
+
+    .work-card--nook {
+        margin-bottom: 40px;
+    }
 }
