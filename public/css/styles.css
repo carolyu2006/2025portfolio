@@ -91,14 +91,10 @@ html {
 body {
     padding: 0;
     margin: 0;
+    cursor: none;   
     /* margin-top: 190px; */
-    cursor: none;
     background-color: var(--color-background);
     color: var(--color-foreground);
-}
-
-* {
-    cursor: none !important;
 }
 
 /* Custom Cursor */
@@ -110,7 +106,7 @@ body {
     background-color: var(--color-green-primary);
     pointer-events: none;
     z-index: 9999;
-    transform: translate(-50%, -50%);
+    transform: translate(calc(-50% - 3px), calc(-50% - 7px));
     transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
     opacity: 0.7;
     display: flex;
@@ -214,11 +210,11 @@ a {
 }
 
 h1 {
-    font-family: 'GajrajOne', sans-serif;
+    font-family: 'ArchivoBlack', sans-serif;
     font-size: 54px;
     margin: 10px 0;
     background-color: transparent;
-    letter-spacing: 2px;
+    letter-spacing: 0px;
     color: var(--color-foreground);
 
 }

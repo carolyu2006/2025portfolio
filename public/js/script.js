@@ -73,10 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mouseY = e.clientY;
     });
 
-    // Smooth cursor follow with better responsiveness
+    // Smooth cursor follow with better responsiveness (more direct follow)
     function animateCursor() {
-        // Use a higher easing factor for better responsiveness
-        const ease = 0.15;
+        const ease = 0.4;
         cursorX += (mouseX - cursorX) * ease;
         cursorY += (mouseY - cursorY) * ease;
         cursor.style.left = cursorX + 'px';

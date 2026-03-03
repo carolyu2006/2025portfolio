@@ -56,6 +56,14 @@ app.get('/projects/games', (request, response) => {
     response.render('projects/games');
 });
 
+app.get('/projects/orangobranding', (request, response) => {
+    response.render('projects/orangobranding');
+});
+
+app.get('/projects/albertplus', (request, response) => {
+    response.render('projects/albertplus');
+});
+
 // Only listen if not in Vercel environment
 if (require.main === module) {
     app.listen(4000, () => {
