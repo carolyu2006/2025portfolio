@@ -60,7 +60,7 @@ section {
 
 .hero-side-right {
     position: absolute;
-    top: 54%;
+    top: 51%;
     left: calc(50% + 140px);
     display: flex;
     flex-direction: column;
@@ -312,6 +312,7 @@ section {
 }
 
 .project-meta-tags {
+    margin-top: 5px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
