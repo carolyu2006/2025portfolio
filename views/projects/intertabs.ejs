@@ -22,7 +22,10 @@
                     <h1>interTabs</h1>
                     <h3>An AI-powered Chrome Extension that manage tabs.</h3>
                     <h3 style="color: #ff6952;" font-weight="bold">1st Place & Best UI/UX at HOF Hack 2025</h3>
-                    <h3>A smart Google Chrome extension built to organize your digital workspace. By intelligently remember, organize, and suggest tabs for you, it transforms browser chaos into a structured environment—perfect for power users who need instant access to task-specific workflows.</h3>
+                    <p style="margin-top: 10px;">A smart Google Chrome extension built to organize your digital
+                        workspace. By intelligently remember, organize, and suggest tabs for you, it transforms browser
+                        chaos into a structured environment—perfect for power users who need instant access to
+                        task-specific workflows.</p>
                 </div>
                 <div class="button-container">
                     <button class="button" onclick="window.location.href='https://www.intertabs.com/'"
@@ -123,37 +126,167 @@
 
             <!-- Problem research -->
             <section>
-
                 <h2>PROBLEMS</h2>
-                <h3>I interviewed 20+ browser users from different fields and age groups to understand their experience
-                    and needs. Noticing the problem is interrelated and causing a bad cycle. Concluding the following
-                    pain points:</h3>
-                <div class="problem-research-container">
-
-                    <div class="problem-research-item-container">
-                        <div class="problem-research-item" style="border-left: 4px solid #ff6952;">
-                            <h3>Can't find the tab</h3>
-                            <p>"The biggest problem is that there are too many tabs in the window and i can't find the
-                                one i
-                                need."</p>
+                <h3>I interviewed 20+ browser users from different fields and age groups. The problems are interrelated
+                    and form a bad cycle:</h3>
+                <div class="analysis-block"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+                    <div class="analysis-items-grid">
+                        <div class="analysis-item analysis-item-bad">
+                            <h3>Can’t Find the Tab</h3>
+                            <p>“The biggest problem is that there are too many tabs and I can’t find the one I need.”
+                            </p>
                         </div>
-
-                        <div class="problem-research-item" style="border-left: 4px solid #ff6952;">
-                            <h3>Don't want to close tabs because it is hard to refind or reopen a website</h3>
-                            <p>"Many times, tabs need to be reused for certain project or certain class, so we don't
-                                want to close it. But things just lay up. "</p>
+                        <div class="analysis-item analysis-item-bad">
+                            <h3>Afraid to Close Tabs</h3>
+                            <p>“Tabs need to be reused for certain projects or classes, so we don’t want to close them.
+                                But they just pile up.”</p>
                         </div>
-                        <div class="problem-research-item" style="border-left: 4px solid #ff6952;">
-                            <h3>Slowing down the browsing process</h3>
-                            <p>"There are so many tabs open, slowing down both me and the computer."</p>
+                        <div class="analysis-item analysis-item-bad">
+                            <h3>Slowing Everything Down</h3>
+                            <p>“There are so many tabs open, slowing down both me and the computer.”</p>
                         </div>
                     </div>
-                    <div class="problem-research-image-container">
-                        <img src="/assets/images/projects/intertabs/problem.png" alt="problem">
+                    <div class="analysis-images single" style="margin-bottom: 0;">
+                        <img src="/assets/images/projects/intertabs/problem.png" alt="Tab overload problem">
                     </div>
                 </div>
-
             </section>
+            <!-- Features -->
+            <section id="features">
+                <h2>SOLUTION</h2>
+                <div class="features-container-wrapper">
+                    <div class="features-container">
+                        <div class="feature-item" id="feature2">
+                            <img src="/assets/images/projects/intertabs/feature2.png" alt="overview">
+                        </div>
+                        <div class="feature-description">
+                            <h3>Save Tabs as Sessions </h3>
+                            <p>Save your tabs as a Session you can reopen anytime. Create separate Sessions for
+                                different tasks to keep your workflow organized. </p>
+                            <ul class="feature-reasoning-list">
+                                <li class="feature-reasoning"><span class="feature-reasoning-label">Added from
+                                        research</span></li>
+                                <li class="feature-reasoning">Users said they avoid closing tabs they still need later
+                                </li>
+                                <li class="feature-reasoning">Sessions reduce the fear of losing important pages</li>
+                                <li class="feature-reasoning">Keeps project-based workflows easy to return to</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="features-container">
+                        <div class="feature-item" id="feature4">
+                            <img src="/assets/images/projects/intertabs/feature4.png" alt="overview">
+                        </div>
+                        <div class="feature-description">
+                            <h3>Smart Labeling </h3>
+                            <p>Automatically label your Sessions based on their content. AI suggests names for tab
+                                groups based on their content, and automatically label them—you can edit them anytime.
+                            </p>
+                            <ul class="feature-reasoning-list">
+                                <li class="feature-reasoning"><span class="feature-reasoning-label">Added from
+                                        research</span></li>
+                                <li class="feature-reasoning">People struggled to find the right tab once too many were
+                                    open</li>
+                                <li class="feature-reasoning">AI-generated labels make saved groups easier to scan and
+                                    recognize</li>
+                                <li class="feature-reasoning">Makes reopening the right session faster</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="features-container">
+                        <div class="feature-item" id="feature5">
+                            <img src="/assets/images/projects/intertabs/feature5.png" alt="overview">
+                        </div>
+                        <div class="feature-description">
+                            <h3>Start New Sessions with AI </h3>
+                            <p>If the user has a window that have large amount of tabs, interTabs will use AI to sort
+                                the tabs into oganized sections for the user.</p>
+                            <ul class="feature-reasoning-list">
+                                <li class="feature-reasoning"><span class="feature-reasoning-label">Added from
+                                        research</span></li>
+                                <li class="feature-reasoning">Tab overload slows down both the user and their device
+                                </li>
+                                <li class="feature-reasoning">AI splits a crowded window into meaningful groups
+                                    automatically</li>
+                                <li class="feature-reasoning">Removes heavy manual work at the moment users feel most
+                                    overwhelmed</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="features-container">
+                        <div class="feature-item" id="feature6">
+                            <img src="/assets/images/projects/intertabs/feature6.png" alt="overview">
+                        </div>
+                        <div class="feature-description">
+                            <h3>One-click Organize </h3>
+                            <p>Have countless tabs open? Intelligently organize them into Sessions with one click.</p>
+                            <ul class="feature-reasoning-list">
+                                <li class="feature-reasoning"><span class="feature-reasoning-label">Added from
+                                        research</span></li>
+                                <li class="feature-reasoning">The solution needed to feel clear and simple</li>
+                                <li class="feature-reasoning">Not like another complex tab manager</li>
+                                <li class="feature-reasoning">One-click organizing gives an immediate way to recover
+                                    from browser chaos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact -->
+            <section>
+                <h2>IMPACT</h2>
+                <h3>interTabs was featured and recognized across launch platforms.</h3>
+                <div class="impact-badges">
+                    <a href="https://fazier.com/launches/intertabs" target="_blank" rel="noopener noreferrer"
+                        class="impact-badge" aria-label="interTabs on Fazier – #1 Product of the Day">
+                        <img src="/assets/images/projects/intertabs/embed_image.svg" alt="Fazier #1 Product of the Day">
+                    </a>
+                    <a href="https://www.producthunt.com/products/intertabs?utm_source=badge-featured&utm_medium=badge&utm_source=badge-intertabs"
+                        target="_blank" rel="noopener noreferrer" class="impact-badge"
+                        aria-label="interTabs on Product Hunt">
+                        <img src="/assets/images/projects/intertabs/featured.svg" alt="Featured on Product Hunt">
+                    </a>
+                    <a href="https://startupfa.me/s/intertabs?utm_source=intertabs.com" target="_blank"
+                        rel="noopener noreferrer" class="impact-badge" aria-label="interTabs on Startup Fame">
+                        <img src="/assets/images/projects/intertabs/light.webp" alt="interTabs on Startup Fame">
+                    </a>
+                </div>
+                <br>
+                <div class="impact-feedback">
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback1.png" alt="User feedback – MCP Explorer">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback5.png" alt="User feedback – Subhadip Saha">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback6.png"
+                            alt="User feedback – Iyobosa Rehoboth">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback8.png"
+                            alt="User feedback – contactnucandleco">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback2.png" alt="User feedback – Yongjie Xie">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback3.png" alt="User feedback – Victor Reztune">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback4 copy.png"
+                            alt="User feedback – Aerosend ai">
+                    </div>
+                    <div class="impact-feedback-item">
+                        <img src="/assets/images/projects/intertabs/feedback4.png" alt="User feedback – Aifindbag Team">
+                    </div>
+                </div>
+            </section>
+
+
             <!-- Market Research -->
             <section>
                 <h2>MARKET RESEARCH</h2>
@@ -171,6 +304,30 @@
                 </div>
             </div>
 
+            <!-- Process -->
+            <section class="process-section">
+                <h2>PROCESS</h2>
+                <h3>
+                    From early product thinking in Figma to prototype reviews and real-world testing, I iterated on the
+                    information architecture, interaction flow, and visual system before finalizing the extension
+                    experience.
+                </h3>
+
+                <div class="process-layout">
+                    <div class="process-figma">
+                        <img src="/assets/images/projects/intertabs/process-fgma.jpg"
+                            alt="interTabs Figma exploration and design process">
+                    </div>
+
+                    <div class="process-supporting-images">
+                        <img src="/assets/images/projects/intertabs/process.JPG"
+                            alt="interTabs extension testing on laptop">
+                        <img src="/assets/images/projects/intertabs/process2.JPG"
+                            alt="interTabs interface review in Figma">
+                    </div>
+                </div>
+            </section>
+
             <!-- Visual Design -->
             <section>
                 <h2>VISUAL DESIGN</h2>
@@ -184,134 +341,35 @@
                     <img src="/assets/images/projects/intertabs/intertabs_d.jpg" alt="visual design">
                 </div>
             </section>
-            <!-- Features -->
-            <section id="features">
-                <h2>FEATURES</h2>
-                <!-- <p>Developed an AI-powered Chrome Extension that manage tabs and use OpenAI API to auto-generate and reorganize tab groups.</p> -->
-                <div class="features-container-wrapper">
-                    <div class="features-container">
-                        <div class="feature-item" id="feature2">
-                            <img src="/assets/images/projects/intertabs/feature2.png" alt="overview">
-                        </div>
-                        <div class="feature-description">
-                            <h3>Save Tabs as Sessions </h3>
-                            <p>Save your tabs as a Session you can reopen anytime. Create separate Sessions for
-                                different tasks to keep your workflow organized. </p>
-                        </div>
-                    </div>
 
-                    <div class="features-container">
-
-                        <div class="feature-item" id="feature4">
-                            <img src="/assets/images/projects/intertabs/feature4.png" alt="overview">
-                        </div>
-                        <div class="feature-description">
-                            <h3>Smart Labeling </h3>
-                            <p>Automatically label your Sessions based on their content. AI suggests names for tab
-                                groups based on their content, and automatically label them—you can edit them anytime.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="features-container">
-
-                        <div class="feature-item" id="feature5">
-                            <img src="/assets/images/projects/intertabs/feature5.png" alt="overview">
-                        </div>
-                        <div class="feature-description">
-                            <h3>Start New Sessions with AI </h3>
-                            <p>If the user has a window that have large amount of tabs, interTabs will use AI to sort
-                                the tabs into oganized sections for the user.</p>
-                        </div>
-                    </div>
-                    <div class="features-container">
-                        <div class="feature-item" id="feature6">
-                            <img src="/assets/images/projects/intertabs/feature6.png" alt="overview">
-                        </div>
-
-                        <div class="feature-description">
-                            <h3>One-click Organize </h3>
-                            <p>Have countless tabs open? Intelligently organize them into Sessions with one click.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- video -->
+            <!-- Final Demo -->
             <section>
-                <h2>Final Demo</h2>
-                <iframe 
-                  src="https://www.youtube.com/embed/2bHR0zIa2yA" 
-                  title="YouTube video player" 
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen>
+                <h2>Video Demo</h2>
+                <iframe src="https://www.youtube.com/embed/2bHR0zIa2yA" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
                 </iframe>
-              </section>
-
-            <!-- Impact -->
-            <section>
-                <h2>IMPACT</h2>
-                <h3>interTabs was featured and recognized across launch platforms.</h3>
-                <div class="impact-badges">
-                    <a href="https://fazier.com/launches/intertabs" target="_blank" rel="noopener noreferrer" class="impact-badge" aria-label="interTabs on Fazier – #1 Product of the Day">
-                        <img src="/assets/images/projects/intertabs/embed_image.svg" alt="Fazier #1 Product of the Day">
-                    </a>
-                    <a href="https://www.producthunt.com/products/intertabs?utm_source=badge-featured&utm_medium=badge&utm_source=badge-intertabs" target="_blank" rel="noopener noreferrer" class="impact-badge" aria-label="interTabs on Product Hunt">
-                        <img src="/assets/images/projects/intertabs/featured.svg" alt="Featured on Product Hunt">
-                    </a>
-                    <a href="https://startupfa.me/s/intertabs?utm_source=intertabs.com" target="_blank" rel="noopener noreferrer" class="impact-badge" aria-label="interTabs on Startup Fame">
-                        <img src="/assets/images/projects/intertabs/light.webp" alt="interTabs on Startup Fame">
-                    </a>
-                </div>
-                <h3 style="margin-top: 40px;">What people are saying</h3>
-                <br>
-                <div class="impact-feedback">
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback1.png" alt="User feedback – MCP Explorer">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback5.png" alt="User feedback – Subhadip Saha">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback6.png" alt="User feedback – Iyobosa Rehoboth">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback8.png" alt="User feedback – contactnucandleco">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback2.png" alt="User feedback – Yongjie Xie">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback3.png" alt="User feedback – Victor Reztune">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback4 copy.png" alt="User feedback – Aerosend ai">
-                    </div>
-                    <div class="impact-feedback-item">
-                        <img src="/assets/images/projects/intertabs/feedback4.png" alt="User feedback – Aifindbag Team">
-                    </div>
-                </div>
             </section>
 
             <section class="next-project-section">
-                <h1 style="font-size: 24px;">Other Projects</h1>
+                <h1 style="font-size: 24px;">More Projects</h1>
                 <div class="next-projects-container">
-                    <a class="next-project-card" href="/projects/mbtiidealpartner">
+                    <a class="next-project-card" href="/projects/everstream">
                         <div class="next-project-image">
-                            <img src="/assets/images/covers/mbti.png" alt="MBTI Ideal Partner">
+                            <img src="/assets/images/covers/everstream.png" alt="Everstream">
                         </div>
                         <div class="next-project-content">
-                            <h2>MBTI Ideal Partner</h2>
-                            <p>Discover your ideal partner based on MBTI personality types.</p>
+                            <h2>Everstream</h2>
+                            <p>A multiplayer card game built around real-time strategy and stream mechanics.</p>
                         </div>
                     </a>
-                    <a class="next-project-card" href="/projects/paletteu">
+                    <a class="next-project-card" href="/projects/albertplus">
                         <div class="next-project-image">
-                            <img src="/assets/images/covers/paletteu.png" alt="Palette U">
+                            <img src="/assets/images/covers/albertplus.png" alt="Albert Plus">
                         </div>
                         <div class="next-project-content">
-                            <h2>Palette U</h2>
-                            <p>Created a color palette generator that allows users to generate color palettes based on
-                                their preferences.</p>
+                            <h2>Albert Plus</h2>
+                            <p>A redesigned companion for NYU's Albert — improving search, comparison, and planning.</p>
                         </div>
                     </a>
                 </div>

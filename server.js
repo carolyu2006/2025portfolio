@@ -27,10 +27,6 @@ app.get('/play', (request, response) => {
     response.render('play');
 });
 
-app.get('/games', (request, response) => {
-    response.render('games');
-});
-
 app.get('/about', (request, response) => {
     response.render('about');
 });

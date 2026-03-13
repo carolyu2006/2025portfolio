@@ -57,6 +57,7 @@ iframe {
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
+    gap: 40px;
 }
 
 .tag {
@@ -115,6 +116,10 @@ iframe {
 
 .button {
     width: 100%;
+}
+
+.button-container .button {
+    width: 200px;
 }
 
 .key-info {
@@ -242,7 +247,7 @@ section h2 {
 }
 
 .problem-statement h3 {
-    font-size: 24px;
+    font-size: 21px;
 }
 
 .problem-research-container {
@@ -286,6 +291,218 @@ section h2 {
 .problem-research-item h3 {
     font-size: 20px;
     font-weight: 600;
+}
+
+/* ===== Analysis System ===== */
+
+/* Hide legacy tags/legend */
+.analysis-tag,
+.analysis-tag-bad,
+.analysis-tag-good,
+.analysis-legend {
+    display: none;
+}
+
+/* Base item — no boxes, just clean rows */
+.analysis-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+    background: none;
+    border-left: none;
+    border-radius: 0;
+}
+
+.analysis-item:last-child {
+    border-bottom: none;
+}
+
+.analysis-item-bad,
+.analysis-item-good {
+    background: none;
+    border-left: none;
+}
+
+/* Colored dot injected before the title */
+.analysis-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-foreground);
+}
+
+.analysis-item h3::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.analysis-item-bad h3::before {
+    background-color: #D94228;
+}
+
+.analysis-item-good h3::before {
+    background-color: #2A6EDB;
+}
+
+.analysis-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-gray);
+    margin: 0;
+    padding-left: 17px;
+}
+
+/* ===== Analysis Block Layout ===== */
+.analysis-block {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Screenshots row */
+.analysis-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.analysis-images.single {
+    grid-template-columns: 1fr;
+}
+
+.analysis-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+.analysis-images.single img {
+    height: auto;
+}
+
+/* Two-column good / bad — separated by a thin line */
+.analysis-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+}
+
+.analysis-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.analysis-col-good {
+    padding-right: 36px;
+    border-right: 1px solid #e8e8e8;
+}
+
+.analysis-col-bad {
+    padding-left: 36px;
+}
+
+.analysis-col-header {
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+    border-bottom: none;
+}
+
+.analysis-col-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.analysis-col-good > .analysis-col-header > .analysis-col-label {
+    color: #2A6EDB;
+}
+
+.analysis-col-bad > .analysis-col-header > .analysis-col-label {
+    color: #D94228;
+}
+
+/* All-bad grid */
+.analysis-items-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 48px;
+    width: 100%;
+}
+
+/* Override any inherited padding inside layouts */
+.analysis-columns .analysis-item,
+.analysis-items-grid .analysis-item {
+    background: none;
+    border-left: none;
+    border-radius: 0;
+    padding: 14px 0;
+}
+
+@media (max-width: 768px) {
+    .analysis-columns,
+    .analysis-items-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-col-good {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+    }
+
+    .analysis-col-bad {
+        padding-left: 0;
+    }
+
+    .analysis-images {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-images img,
+    .analysis-images.single img {
+        height: auto;
+    }
+}
+
+.process-section {
+    width: 100%;
+}
+
+.process-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.9fr);
+    gap: 20px;
+    width: 100%;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.process-figma img,
+.process-supporting-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.process-supporting-images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .visual-design-container {
@@ -339,8 +556,10 @@ section h2 {
 
 .features-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
 }
 
 .features-container-two {
@@ -355,19 +574,54 @@ section h2 {
 .feature-description {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 10px;
+    width: min(320px, 100%);
+    flex-shrink: 0;
+}
+
+.feature-description h3,
+.feature-description p {
+    margin: 0;
+}
+
+.feature-description p {
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+.feature-description .feature-reasoning-list {
+    margin: 18px 0 0;
+    padding-left: 20px;
+}
+
+.feature-description .feature-reasoning {
+    font-size: 0.95rem;
+    color: #5d5d5d;
+    line-height: 1.5;
+}
+
+.feature-description .feature-reasoning-label {
+    color: var(--color-foreground);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.feature-description .feature-reasoning-list li:first-child {
+    list-style: none;
+    margin-left: -20px;
+    margin-bottom: 4px;
 }
 
 .feature-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    /* border-radius: 10px; */
+    justify-content: center;
     width: 100%;
     gap: 6px;
-    /* aspect-ratio: 16/9; */
-    /* background-color: var(--color-gray-light); */
+    box-sizing: border-box;
 }
 
 
@@ -388,14 +642,15 @@ section h2 {
 }
 
 .feature-item img {
-    /* width: 0%; */
-    width: min(90%, 600px);
+    width: min(100%, 620px);
+    height: auto;
+}
 
-    /* align-self: center;
-    justify-self: center; */
-    /* height: 80%; */
-    /* object-fit: cover; */
-
+.feature-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
 }
 
 .two-column-container {
@@ -552,6 +807,54 @@ section h2 {
     margin: 0;
 }
 
+/* Interview quote cards */
+.interview-quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 28px;
+}
+
+.interview-quote-card {
+    background-color: #f6f1ff;
+    border-radius: 12px;
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.interview-quote-mark {
+    font-size: 48px;
+    line-height: 1;
+    color: #9B7FD4;
+    font-family: Georgia, serif;
+    margin-bottom: -8px;
+}
+
+.interview-quote-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-foreground);
+    margin: 0;
+    flex: 1;
+}
+
+.interview-quote-author {
+    font-size: 13px;
+    color: #9B7FD4;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .interview-quotes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .interview-insights-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -611,10 +914,128 @@ section h2 {
     /* border-radius: 16px; */
 }
 
+/* ── Project side navigation ─────────────────────────────── */
+
+@keyframes sidenav-dot-pop {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(2.2); }
+    70%  { transform: scale(1.4); }
+    100% { transform: scale(1.6); }
+}
+
+.project-sidenav {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 200;
+}
+
+/* vertical track line — leftmost element */
+.project-sidenav-track {
+    display: none;
+}
+
+.project-sidenav-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0%;
+    background: var(--color-foreground);
+    transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* each row: dot then label */
+.project-sidenav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* dot sits on top of the track line */
+.project-sidenav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-gray-light);
+    background: transparent;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: background 0.2s ease,
+                border-color 0.25s ease,
+                transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* label always visible in grey */
+.project-sidenav-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-gray-light);
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+/* active */
+.project-sidenav-item.active .project-sidenav-dot {
+    background: var(--color-foreground);
+    border-color: var(--color-foreground);
+    animation: sidenav-dot-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.project-sidenav-item.active .project-sidenav-label {
+    color: var(--color-foreground);
+}
+
+/* hover */
+.project-sidenav-item:hover .project-sidenav-dot {
+    border-color: var(--color-foreground);
+}
+
+.project-sidenav-item:hover .project-sidenav-label {
+    color: var(--color-foreground);
+}
+
+@media (max-width: 1200px) {
+    .project-sidenav {
+        display: none;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
+    .features-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .feature-item {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .feature-description {
+        width: 100%;
+    }
+
     .next-projects-container {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+
+    .process-layout {
+        grid-template-columns: 1fr;
     }
 
     .next-project-card .next-project-content h2 {

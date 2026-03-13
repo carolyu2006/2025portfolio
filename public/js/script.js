@@ -124,6 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (current.classList && current.classList.contains('sidebar')) {
                 return true;
             }
+            // Check if it's in project sidenav
+            if (current.classList && current.classList.contains('project-sidenav')) {
+                return true;
+            }
             
             current = current.parentElement;
         }
@@ -288,6 +292,136 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+});
+
+// Project side navigation
+document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.content');
+    if (!content) return;
+
+    const sections = Array.from(content.querySelectorAll('section')).filter(s => s.querySelector('h2') && !s.classList.contains('next-project-section'));
+    if (sections.length < 2) return;
+
+    // Give each section a stable ID if it doesn't have one
+    sections.forEach(section => {
+        if (!section.id) {
+            const text = section.querySelector('h2').textContent.trim();
+            section.id = 'sec-' + text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        }
+    });
+
+    // Build nav element
+    const nav = document.createElement('nav');
+    nav.className = 'project-sidenav';
+    nav.setAttribute('aria-label', 'Page sections');
+
+    const track = document.createElement('div');
+    track.className = 'project-sidenav-track';
+    const progress = document.createElement('div');
+    progress.className = 'project-sidenav-progress';
+    track.appendChild(progress);
+    nav.appendChild(track);
+
+    sections.forEach(section => {
+        const label = section.querySelector('h2').textContent.trim();
+        const item = document.createElement('a');
+        item.className = 'project-sidenav-item';
+        item.href = '#' + section.id;
+
+        const dot = document.createElement('span');
+        dot.className = 'project-sidenav-dot';
+
+        const labelEl = document.createElement('span');
+        labelEl.className = 'project-sidenav-label';
+        labelEl.textContent = label;
+
+        item.appendChild(dot);
+        item.appendChild(labelEl);
+        nav.appendChild(item);
+
+        item.addEventListener('click', e => {
+            e.preventDefault();
+            const top = section.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    // Position absolutely to start, aligned with the h1
+    nav.style.position = 'absolute';
+    nav.style.top = '0';
+    nav.style.left = '28px';
+    nav.style.transform = 'none';
+    nav.style.transition = 'opacity 0.3s ease';
+
+    document.body.appendChild(nav);
+
+    const navItems = Array.from(nav.querySelectorAll('.project-sidenav-item'));
+
+    function setActive(index) {
+        navItems.forEach(i => i.classList.remove('active'));
+        navItems[index]?.classList.add('active');
+        const pct = sections.length > 1 ? (index / (sections.length - 1)) * 100 : 0;
+        progress.style.height = pct + '%';
+    }
+
+    setActive(0);
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const idx = sections.indexOf(entry.target);
+                if (idx !== -1) setActive(idx);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '-10% 0px -55% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    const h1 = document.querySelector('.content h1');
+    const footer = document.querySelector('.next-project-section') || document.querySelector('footer');
+    const footerMargin = 24;
+
+    // Get the h1's top position relative to the document (stable after layout)
+    function getH1DocTop() {
+        if (!h1) return 0;
+        return h1.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function updateSidenavPosition() {
+        const navHeight = nav.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const h1DocTop = getH1DocTop();
+
+        // The scroll position at which the nav reaches viewport center
+        const stickyThreshold = h1DocTop - viewportHeight / 2 + navHeight / 2;
+
+        if (scrollY < stickyThreshold) {
+            // Scroll with the page — keep nav at h1 level
+            nav.style.position = 'absolute';
+            nav.style.top = h1DocTop + 'px';
+            nav.style.transform = 'none';
+        } else {
+            // Fixed and centered
+            nav.style.position = 'fixed';
+            nav.style.top = '50%';
+            nav.style.transform = 'translateY(-50%)';
+
+            // Align nav bottom with footer bottom as it scrolls up
+            if (footer) {
+                const footerBottom = footer.getBoundingClientRect().bottom;
+                const centeredNavBottom = viewportHeight / 2 + navHeight / 2;
+                if (footerBottom < centeredNavBottom) {
+                    nav.style.top = (footerBottom - navHeight) + 'px';
+                    nav.style.transform = 'none';
+                }
+            }
+        }
+    }
+
+    window.addEventListener('scroll', updateSidenavPosition, { passive: true });
+    window.addEventListener('resize', updateSidenavPosition, { passive: true });
+    updateSidenavPosition();
 });
 
 // Feature selection for project pages
