@@ -52,6 +52,14 @@ app.get('/projects/everstream', (request, response) => {
     response.render('projects/everstream');
 });
 
+app.get('/projects/albertplus', (request, response) => {
+    response.render('projects/albertplus');
+});
+
+app.get('/projects/orangobranding', (request, response) => {
+    response.render('projects/orangobranding');
+});
+
 // app.get('/projects/games', (request, response) => {
 //     response.render('projects/games');
 // });
