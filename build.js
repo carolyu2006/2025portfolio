@@ -11,7 +11,9 @@ const routes = [
     { template: 'projects/intertabs', output: 'projects/intertabs/index.html' },
     { template: 'projects/paletteu', output: 'projects/paletteu/index.html' },
     { template: 'projects/mbtiidealpartner', output: 'projects/mbtiidealpartner/index.html' },
-    { template: 'projects/everstream', output: 'projects/everstream/index.html' }
+    { template: 'projects/everstream', output: 'projects/everstream/index.html' },
+    { template: 'projects/albertplus', output: 'projects/albertplus/index.html' },
+    { template: 'projects/orangobranding', output: 'projects/orangobranding/index.html' },
 ];
 
 // Create dist directory
