@@ -13,115 +13,161 @@
 <body>
     <%- include('components/header-new.ejs') %>
         <div class="main-content">
-            <h1>Playground</h1>
+            <div class="play-header">
+                <h1>Playground</h1>
+                <div class="play-filter">
+                <button class="filter-btn active" data-filter="all">all</button>
+                <button class="filter-btn" data-filter="code">code</button>
+                <button class="filter-btn" data-filter="design">design</button>
+                <button class="filter-btn" data-filter="game">game</button>
+                <button class="filter-btn" data-filter="xr">xr</button>
+                <button class="filter-btn" data-filter="animation">animation</button>
+                <button class="filter-btn" data-filter="art">art</button>
+                </div>
+            </div>
             <div class="play-container">
-                <div class="play-item-wrapper">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="game" href="/projects/everstream">
+                    <div class="play-item-info">
+                        <h4>2025</h4>
+                        <h2>Everstream</h2>
+                        <h3>Game Designer & Developer</h3>
+                        <p>A 2D game depicting the journey of the four seasons along a stream.</p>
+                    </div>
+                    <video class="play-item" src="/assets/images/covers/everstream.mov" poster="/assets/images/covers/everstream.png" autoplay muted loop playsinline preload="metadata"></video>
+                </a>
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="xr" href="https://devpost.com/software/dreamail" target="_blank" rel="noopener noreferrer">
+                    <div class="play-item-info">
+                        <h4>2026</h4>
+                        <h2>DREAMMAIL</h2>
+                        <h3>Designer & Developer</h3>
+                        <p>A spatial AR interface for everyday digital tools, powered by AI-driven interaction.</p>
+                    </div>
+                    <img class="play-item" src="/assets/images/covers/dreamail.png" alt="Dreammail">
+                </a>
+                
+                <div class="play-item-wrapper" data-tag="xr">
                     <video class="play-item" src="/assets/images/play/mr-coffeechat.mov" alt="music" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </div>
-                <a class="play-item-wrapper" href="https://pixel-me-taupe.vercel.app/" target="_blank"
+                <a class="play-item-wrapper" data-tag="code" href="https://pixel-me-taupe.vercel.app/" target="_blank"
                     rel="noopener noreferrer">
 
                     <video class="play-item" src="/assets/images/play/pixelme.mov" alt="pixelMe" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </a>
 
-                <a class="play-item-wrapper"
+                <a class="play-item-wrapper" data-tag="code"
                     href="https://chromewebstore.google.com/detail/pet-ur-friend/onddalpajmjpenfeoppfpcincflmbghb"
                     target="_blank" rel="noopener noreferrer">
 
                     <video class="play-item" src="/assets/images/play/PetUrFriends.mov" alt="TheFalseTurn" loop autoplay
                         muted playsinline></video>
                 </a>
-                
-                <div class="play-item-wrapper">
+
+                <div class="play-item-wrapper" data-tag="design">
                     <img class="play-item" src="/assets/images/play/app4.jpg" alt="App">
                 </div>
-                
-                <div class="play-item-wrapper">
+
+                <div class="play-item-wrapper" data-tag="design">
                     <img class="play-item" src="/assets/images/play/design1.png" alt="design1">
                 </div>
-                
-                <div class="play-item-wrapper">
+
+                <div class="play-item-wrapper" data-tag="code">
                     <video class="play-item" src="/assets/images/play/band-comp.mov" alt="music" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </div>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="animation">
                     <video class="play-item" src="/assets/images/play/cook-animation.mov" alt="music" autoplay muted
                         loop playsinline preload="metadata"></video>
                 </div>
-                <a class="play-item-wrapper" href="https://youtu.be/auyys1KmkXU" target="_blank"
+                <a class="play-item-wrapper" data-tag="code" href="https://youtu.be/auyys1KmkXU" target="_blank"
                     rel="noopener noreferrer">
                     <img class="play-item" src="/assets/images/play/DreamOrDime.png" alt="DreamOrDime">
                 </a>
-                <a class="play-item-wrapper" href="https://youtu.be/e9QJO8i3q8s" target="_blank"
+                <a class="play-item-wrapper" data-tag="code" href="https://youtu.be/e9QJO8i3q8s" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/InHistory.mov" alt="InHistory" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </a>
-                <a class="play-item-wrapper" href="https://youtu.be/Mgj6xAEFDHo" target="_blank"
+                <a class="play-item-wrapper" data-tag="game" href="https://youtu.be/Mgj6xAEFDHo" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/game_maze.mov" alt="Game Maze" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </a>
-                <a class="play-item-wrapper" href="https://animal-clock-git-main-carol-projects.vercel.app/"
+                <a class="play-item-wrapper" data-tag="code" href="https://animal-clock-git-main-carol-projects.vercel.app/"
                     target="_blank" rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/clock.mov" alt="Clock" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </a>
-                
-                <a class="play-item-wrapper" href="https://youtu.be/O5TcwrCu_Dw" target="_blank"
+
+                <a class="play-item-wrapper" data-tag="game" href="https://youtu.be/O5TcwrCu_Dw" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/maricat.mp4" alt="Maricat" autoplay muted loop
-                        playsinline preload="metadata" e></video>
+                        playsinline preload="metadata"></video>
                 </a>
 
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="code">
                     <video class="play-item" src="/assets/images/play/xa.mov" alt="xa" autoplay muted loop playsinline
                         preload="metadata"></video>
                 </div>
-                <a class="play-item-wrapper" href="https://youtu.be/Bqjvh_u7IWU" target="_blank"
+                <a class="play-item-wrapper" data-tag="code" href="https://youtu.be/Bqjvh_u7IWU" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/musicLooper.mp4" alt="MusicLooper" autoplay muted
                         loop playsinline preload="metadata"></video>
                 </a>
-                <a class="play-item-wrapper" href="https://youtu.be/2VhsPX2RgJA" target="_blank"
+                <a class="play-item-wrapper" data-tag="game" href="https://youtu.be/2VhsPX2RgJA" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/zelda.mp4" alt="Zelda" autoplay muted loop
                         playsinline preload="metadata"></video>
                 </a>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="design">
                     <img class="play-item" src="/assets/images/play/orango.png" alt="orango">
                 </div>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="code">
                     <img class="play-item" src="/assets/images/play/NeoAssistant.png" alt="NeoAssistant">
                 </div>
-                <div class="play-item-wrapper">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" href="https://sweetdreams4all.org/" target="_blank" rel="noopener noreferrer">
+                    <div class="play-item-info">
+                        <h4>2025</h4>
+                        <h2>Sweet Dream 4 All</h2>
+                        <h3>Designer & Front-End Developer</h3>
+                    </div>
+                    <img class="play-item" src="/assets/images/experience/sweetdreams-behind.png" alt="Sweet Dream 4 All">
+                </a>
+                <div class="play-item-wrapper" data-tag="animation">
                     <video class="play-item" src="/assets/images/play/TheFalseTurn.mov" alt="TheFalseTurn" autoplay
                         muted loop playsinline preload="metadata"></video>
                 </div>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="animation">
                     <video class="play-item" src="/assets/images/play/EchoesOfOurStep.mov" alt="EchoesOfOurStep"
                         autoplay muted loop playsinline preload="metadata"></video>
                 </div>
-                <a class="play-item-wrapper" href="https://youtu.be/AuA6fwoRjjc" target="_blank"
+                <a class="play-item-wrapper" data-tag="animation" href="https://youtu.be/AuA6fwoRjjc" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/TheInvisibleLoop.mp4" alt="TheInvisibleLoop"
                         autoplay muted loop playsinline preload="metadata"></video>
                 </a>
 
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="art">
                     <img class="play-item" src="/assets/images/play/modelMe.jpg" alt="EchoesOfOurStep">
                 </div>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="art">
                     <img class="play-item" src="/assets/images/play/modelMe2.jpg" alt="EchoesOfOurStep">
                 </div>
-                <div class="play-item-wrapper">
+                <div class="play-item-wrapper" data-tag="art">
                     <img class="play-item" src="/assets/images/play/art2.png" alt="art2">
                 </div>
-                <div class="play-item-wrapper">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" href="https://globaldeltasecurities.com/" target="_blank" rel="noopener noreferrer">
+                    <div class="play-item-info">
+                        <h4>2025</h4>
+                        <h2>Global Delta Securities</h2>
+                        <h3>Designer & Front-End Developer</h3>
+                    </div>
+                    <img class="play-item" src="/assets/images/experience/gds-behind.png" alt="Global Delta Securities">
+                </a>
+                <!-- <div class="play-item-wrapper" data-tag="art">
                     <img class="play-item" src="/assets/images/play/selfportrait-blue.jpg" alt="selfportrait-blue">
-                </div>
+                </div> -->
             </div>
         </div>
         <%- include('components/footer.ejs') %>

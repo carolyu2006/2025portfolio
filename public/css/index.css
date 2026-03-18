@@ -5,7 +5,7 @@ body {
 
 section {
     /* min-height: 75vh; */
-    margin: 15vh 0;
+    margin: 10vh 0;
     width: 100%;
 }
 
@@ -192,7 +192,7 @@ section {
 }
 
 #project {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     margin-top: 20px;
     scroll-margin-top: 100px;
 }
@@ -396,7 +396,7 @@ section {
 .play-container {
     column-count: 3;
     column-gap: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 2vh;
 }
 
 .play-item-wrapper {
@@ -564,37 +564,43 @@ a.play-item-wrapper {
 /* Mobile Responsive Styles */
 @media (max-width: 1024px) {
     .content {
-        width: 90vw;
+        width: calc(100vw - 2 * var(--margin-x));
         max-width: 900px;
     }
 }
 
 @media (max-width: 768px) {
 
-    .header-middle{
+    button {
+        font-size: 12px;
+        padding: 7px 14px;
+    }
+
+    .work-experience-section .content-header button {
         display: none;
     }
+
     .hero {
-        height: auto;
-        margin-top: 15vh;
-        padding: 0 20px;
+        height: 55vh;
+        margin-top: 18vh;
+        margin-bottom: 18vh;
     }
 
     .hero-title {
-        font-size: 48px;
+        font-size: 36px;
     }
 
     .hero-title-icon {
-        height: 60px;
+        height: 45px;
     }
 
     .hero-image {
-        width: 200px;
+        width: 180px;
     }
 
     .hero-side {
         position: static;
-        margin: 20px auto;
+        margin: 40px auto 20px;
         width: 90%;
         max-width: 300px;
         border-left: none;
@@ -602,9 +608,41 @@ a.play-item-wrapper {
         text-align: center;
     }
 
+    .hero-side-right {
+        display: none;
+    }
+
+    .hero-side-title {
+        display: none;
+    }
+
+    .hero-title-carol {
+        margin-top: 0px;
+    }
+
+    .hero-title-container {
+        align-items: center;
+    }
+
+    .parallax-leaves {
+        display: block;
+        height: 70vh;
+    }
+
+    .hero-fish-icon {
+        left: 30%;
+    }
+
+    .leaf-1 { top: 44%; left: -15%; }
+    .leaf-2 { display: none; }
+    .leaf-3 { display: none; }
+    .leaf-4 { top: 30%; right: -4%; left: auto; }
+    .leaf-5 { display: none; }
+    .leaf-6 { display: none; }
+
     .content {
-        width: 95vw;
-        /* padding: 0 20px; */
+        width: calc(100vw - 2 * var(--margin-x));
+        max-width: 900px;
     }
 
     .content-header {
@@ -614,17 +652,95 @@ a.play-item-wrapper {
         margin-bottom: 40px;
     }
 
-    .leaf-decoration {
-        display: none;
+    #play .content-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
     }
+
+    /* .leaf-decoration {
+        display: none;
+    } */
 
     .projects-container {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 40px;
+    }
+
+    .projects-item {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        aspect-ratio: unset;
+        overflow: visible;
+    }
+
+    .projects-item img,
+    .projects-item video {
+        transform: none !important;
+        position: static;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        order: -1;
+        border-radius: 12px;
+    }
+
+    .projects-item-content {
+        width: 100%;
+        height: auto;
+        padding: 12px 0 0 0;
+        position: static;
+        background-color: transparent;
+    }
+
+    .work-card-img {
+        display: block !important;
+    }
+
+    .projects-item .project-meta {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .projects-item .project-meta-tags {
+        gap: 6px;
+    }
+
+    .projects-item .project-meta-tag {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .projects-item h3 {
+        display: block;
+        font-size: 13px;
+        color: var(--color-gray);
+        font-weight: 400;
+        margin: 2px 0 0 0;
+    }
+
+    .projects-item h4 {
+        display: block;
+        font-size: 12px;
+        color: var(--color-gray);
+        font-weight: 400;
+        margin: 0 0 4px 0;
     }
 
     .projects-item h2 {
-        font-size: 28px;
+        font-size: 22px;
+        color: var(--color-foreground);
+        margin: 0;
+    }
+
+    .projects-item p {
+        color: var(--color-foreground);
+        font-size: 14px;
+        margin: 6px 0 0 0;
+        line-height: 1.4;
     }
 
     .play-container {
@@ -638,8 +754,11 @@ a.play-item-wrapper {
     }
 
     .about-item-image {
-        width: 80vw;
-        max-width: 400px;
+        width: 100%;
+        height: 75vw;
+        max-width: none;
+        object-fit: cover;
+        object-position: center;
         margin-bottom: 30px;
     }
 
@@ -664,17 +783,57 @@ a.play-item-wrapper {
     }
 
     section {
-        margin: 10vh 0;
+        margin-top: 10vh;
+        margin-bottom: 0;
     }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        margin-top: 10vh;
+
+    :root {
+        --margin-x: 24px;
     }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .hero {
+        height: 55vh;
+        margin-top: 18vh;
+        margin-bottom: 18vh;
+    }
+
+    .parallax-leaves {
+        display: block;
+        height: 70vh;
+    }
+
+    .hero-fish-icon {
+        left: 13%;
+    }
+
+    .leaf-1 { top: 44%; left: -15%; }
+    .leaf-2 { display: none; }
+    .leaf-3 { display: none; }
+    .leaf-4 { top: 30%;  right: -4%; left: auto; }
+    .leaf-5 { display: none; }
+    .leaf-6 { display: none; }
 
     .hero-title {
         font-size: 36px;
+    }
+
+    .hero-title-carol {
+        margin-top: 0px;
+    }
+
+    .hero-side {
+        margin-top: 40px;
+    }
+
+    .hero-side-title {
+        display: none;
     }
 
     .hero-title-icon {
@@ -682,12 +841,11 @@ a.play-item-wrapper {
     }
 
     .hero-image {
-        width: 150px;
+        width: 180px;
     }
 
     .content {
-        width: 100vw;
-        /* padding: 0 15px; */
+        width: calc(100vw - 2 * var(--margin-x));
     }
 
     .projects-item h2 {
@@ -695,7 +853,7 @@ a.play-item-wrapper {
     }
 
     .projects-item-content {
-        padding: 15px;
+        padding: 15px 0px;
     }
 
     .play-container {
@@ -709,4 +867,9 @@ a.play-item-wrapper {
     .header-index-container {
         padding: 15px;
     }
+
+    .hero-title-container{
+        align-items: center;
+    }
+
 }

@@ -18,13 +18,33 @@
 
         <div class="header-right">
             <button class="menu-button header-link" style="justify-content: flex-end;">
-                <!-- <h1 class="header-title" style="z-index: -10;">MENU</h1>
-                <img class="menu-button-icon" style="z-index: -10;" src="/assets/icons/menu.svg" alt="menu"> -->
                 <h1 class="header-title">CONTACT</h1>
                 <img class="menu-button-icon light" src="/assets/icons/menu.svg" alt="menu">
                 <img class="menu-button-icon dark" src="/assets/icons/menu-dark.svg" alt="menu">
             </button>
         </div>
+    </div>
+
+    <!-- Mobile header bar -->
+    <div class="header-mobile-bar">
+        <div class="header-mobile-right">
+            <a href="/" class="header-mobile-logo">
+                <img class="logo light" src="/assets/icons/yu.svg" alt="logo">
+                <img class="logo dark" src="/assets/icons/yu-dark.svg" alt="logo">
+            </a>
+            <a href="/"><h1 class="header-title header-mobile-title">CAROL</h1></a>
+        </div>
+        <button class="menu-button-mobile" id="menu-button-mobile" aria-label="Menu">
+            <img class="light" src="/assets/icons/menu.svg" alt="menu">
+            <img class="dark" src="/assets/icons/menu-dark.svg" alt="menu">
+        </button>
+    </div>
+    <!-- Mobile nav dropdown -->
+    <div class="header-mobile-nav" id="header-mobile-nav">
+        <a href="/#project" class="nav-link nav-link--work">WORK</a>
+        <a href="/play" class="nav-link">PLAY</a>
+        <a href="/about" class="nav-link">ABOUT</a>
+        <img class="menu-bottom" src="/assets/images/main/menu-bottom.svg" alt="">
     </div>
     <div id="menu-dropdown" class="menu-dropdown">
         <div class="menu-dropdown-content">
@@ -94,6 +114,33 @@
             }
             updateHeaderBg();
             window.addEventListener('scroll', updateHeaderBg, { passive: true });
+
+            // Mobile nav toggle
+            var mobileBtn = document.getElementById('menu-button-mobile');
+            var mobileNav = document.getElementById('header-mobile-nav');
+            if (mobileBtn && mobileNav) {
+                mobileBtn.addEventListener('click', function () {
+                    if (mobileNav.classList.contains('menu-open')) {
+                        mobileNav.classList.add('menu-closing');
+                        mobileNav.classList.remove('menu-open');
+                        setTimeout(function () {
+                            mobileNav.classList.remove('menu-closing');
+                        }, 600);
+                    } else {
+                        mobileNav.classList.remove('menu-closing');
+                        mobileNav.classList.add('menu-open');
+                    }
+                });
+                document.addEventListener('click', function (e) {
+                    if (!mobileNav.contains(e.target) && e.target !== mobileBtn && !mobileBtn.contains(e.target)) {
+                        if (mobileNav.classList.contains('menu-open')) {
+                            mobileNav.classList.add('menu-closing');
+                            mobileNav.classList.remove('menu-open');
+                            setTimeout(function () { mobileNav.classList.remove('menu-closing'); }, 600);
+                        }
+                    }
+                });
+            }
         })();
     </script>
 </header>

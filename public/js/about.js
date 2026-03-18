@@ -1,134 +1,157 @@
+// Outside Design — full-page horizontal scroll with smooth interpolation
+document.addEventListener('DOMContentLoaded', function () {
+    var wrapper = document.querySelector('.interests-page-wrapper');
+    var panel = document.querySelector('.interests-panel');
+    var container = document.querySelector('.interests-container');
+    var scrollTrack = document.querySelector('.interest-item-scroll');
+    if (!wrapper || !panel || !container || !scrollTrack) return;
+
+    var currentX = 0;   // current translateX (smoothed)
+    var targetX = 0;    // target translateX (from scroll position)
+    var animating = false;
+    var LERP_SPEED = 0.12; // how fast currentX catches up to targetX (0–1, lower = smoother)
+
+    function getScrollableWidth() {
+        return Math.max(0, scrollTrack.scrollWidth - container.clientWidth);
+    }
+
+    function init() {
+        panel.style.position = '';
+        panel.style.top = '';
+        panel.style.left = '';
+
+        var scrollableWidth = getScrollableWidth();
+        wrapper.style.height = (window.innerHeight + scrollableWidth) + 'px';
+    }
+
+    // Ease function: smooth start and end of the horizontal scroll
+    function easeInOutCubic(t) {
+        return t < 0.5
+            ? 4 * t * t * t
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function update() {
+        var wrapperRect = wrapper.getBoundingClientRect();
+        var scrollableWidth = getScrollableWidth();
+        var maxScroll = wrapper.offsetHeight - window.innerHeight;
+
+        if (maxScroll <= 0) {
+            panel.style.position = '';
+            panel.style.top = '';
+            panel.style.left = '';
+            scrollTrack.style.transform = 'translateX(0)';
+            return;
+        }
+
+        var scrolled = -wrapperRect.top;
+
+        if (scrolled <= -200) {
+            // Before the section: panel sits at top of wrapper
+            panel.style.position = 'relative';
+            panel.style.top = '0';
+            panel.style.left = '';
+            targetX = 0;
+        } else if (scrolled >= maxScroll) {
+            // After the section: panel sits at bottom of wrapper
+            panel.style.position = 'relative';
+            panel.style.top = maxScroll + 'px';
+            panel.style.left = '';
+            targetX = -scrollableWidth;
+        } else if (scrolled < 0) {
+            // Lead-in zone (-200 to 0): fixed but top slides from 200 → 0
+            panel.style.position = 'fixed';
+            panel.style.top = (-scrolled) + 'px';
+            panel.style.left = '0';
+            var rawProgress = (scrolled + 200) / (maxScroll + 200);
+            var easedProgress = easeInOutCubic(rawProgress);
+            targetX = -easedProgress * scrollableWidth;
+        } else {
+            // Fully pinned zone (0 to maxScroll)
+            panel.style.position = 'fixed';
+            panel.style.top = '0';
+            panel.style.left = '0';
+            var rawProgress = (scrolled + 200) / (maxScroll + 200);
+            var easedProgress = easeInOutCubic(rawProgress);
+            targetX = -easedProgress * scrollableWidth;
+        }
+
+        // Start animation loop if not already running
+        if (!animating) {
+            animating = true;
+            animate();
+        }
+    }
+
+    function animate() {
+        // Lerp currentX toward targetX
+        var dx = targetX - currentX;
+
+        if (Math.abs(dx) < 0.5) {
+            // Close enough — snap and stop
+            currentX = targetX;
+            scrollTrack.style.transform = 'translateX(' + currentX + 'px)';
+            animating = false;
+            return;
+        }
+
+        currentX += dx * LERP_SPEED;
+        scrollTrack.style.transform = 'translateX(' + currentX + 'px)';
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', function () {
+        init();
+        update();
+    });
+
+    // While panel is fixed: capture all wheel input, funnel into vertical page scroll
+    window.addEventListener('wheel', function (e) {
+        var wrapperRect = wrapper.getBoundingClientRect();
+        var maxScroll = wrapper.offsetHeight - window.innerHeight;
+        var scrolled = -wrapperRect.top;
+
+        if (scrolled <= -200 || scrolled >= maxScroll) return;
+
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY + e.deltaX);
+    }, { passive: false });
+
+    // Wait for images to load so scrollWidth is accurate
+    var images = scrollTrack.querySelectorAll('img');
+    var loaded = 0;
+    var total = images.length;
+
+    function onImageReady() {
+        loaded++;
+        if (loaded >= total) {
+            init();
+            update();
+        }
+    }
+
+    for (var i = 0; i < images.length; i++) {
+        if (images[i].complete) {
+            onImageReady();
+        } else {
+            images[i].addEventListener('load', onImageReady);
+            images[i].addEventListener('error', onImageReady);
+        }
+    }
+
+    init();
+    update();
+});
+
 // Community section — expand/collapse (whole row clickable)
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.community-item').forEach(function(item) {
-        item.addEventListener('click', function(e) {
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.community-item').forEach(function (item) {
+        item.addEventListener('click', function (e) {
             if (e.target.closest('.community-detail')) return;
             var btn = this.querySelector('.community-expand');
             var isExpanded = this.classList.toggle('expanded');
             if (btn) btn.setAttribute('aria-expanded', isExpanded);
         });
     });
-});
-
-// Measurements aligned with about.css (.interests-container { top: 120px }, etc.)
-const STICKY_TOP = 120;
-const START_DELAY = 0.1; // Start animation at 10% through the scroll
-const END_DELAY = 1.0; // End animation at 100% (extends the visible range)
-
-document.addEventListener('DOMContentLoaded', function() {
-    const scrollWrapper = document.querySelector('.interests-scroll-wrapper');
-    const interestsContainer = document.querySelector('.interests-container');
-    const scrollContent = document.querySelector('.interests-scroll-content');
-    const interestItem = document.querySelector('.interest-item');
-    
-    if (!scrollWrapper || !interestsContainer || !scrollContent || !interestItem) {
-        console.log('Interest elements not found');
-        return;
-    }
-    
-    let maxScroll = 0;
-    let imagesLoaded = false;
-    
-    function calculateMaxScroll() {
-        const images = interestItem.querySelectorAll('img');
-        maxScroll = 0;
-        
-        images.forEach(img => {
-            const imgWidth = img.offsetWidth || img.clientWidth;
-            const marginRight = parseInt(window.getComputedStyle(img).marginRight) || 0;
-            maxScroll += imgWidth + marginRight;
-        });
-        
-        // Add extra padding to ensure last image is fully visible
-        maxScroll = Math.max(0, maxScroll - window.innerWidth + 300);
-        imagesLoaded = true;
-        console.log('Max scroll calculated:', maxScroll, 'px');
-    }
-    
-    const images = interestItem.querySelectorAll('img');
-    let loadedCount = 0;
-    const totalImages = images.length;
-    
-    function maybeRunCalculate() {
-        if (loadedCount >= totalImages) {
-            setTimeout(calculateMaxScroll, 100);
-        }
-    }
-    
-    if (totalImages === 0) {
-        calculateMaxScroll();
-    } else {
-        images.forEach(img => {
-            if (img.complete) {
-                loadedCount++;
-            } else {
-                img.addEventListener('load', function() {
-                    loadedCount++;
-                    maybeRunCalculate();
-                });
-                img.addEventListener('error', function() {
-                    loadedCount++;
-                    maybeRunCalculate();
-                });
-            }
-        });
-        if (loadedCount >= totalImages) {
-            setTimeout(calculateMaxScroll, 100);
-        }
-        setTimeout(function() {
-            if (!imagesLoaded) calculateMaxScroll();
-        }, 1500);
-    }
-    
-    function updateHorizontalScroll() {
-        const wrapperRect = scrollWrapper.getBoundingClientRect();
-        const wrapperTop = wrapperRect.top;
-        const wrapperHeight = wrapperRect.height;
-        const viewportHeight = window.innerHeight;
-        const denominator = wrapperHeight - (viewportHeight - STICKY_TOP);
-        
-        let scrollDistance = 0;
-        
-        // Only animate when wrapper is in sticky range
-        if (imagesLoaded && maxScroll > 0 && denominator > 0) {
-            const isInView = wrapperTop <= STICKY_TOP && (wrapperTop + wrapperHeight) > viewportHeight;
-            
-            if (isInView) {
-                // Raw progress from 0 to 1
-                const rawProgress = (STICKY_TOP - wrapperTop) / denominator;
-                
-                // Apply start and end delays - animation maps from START_DELAY to END_DELAY
-                const delayedProgress = Math.max(0, Math.min(1, 
-                    (rawProgress - START_DELAY) / (END_DELAY - START_DELAY)
-                ));
-                
-                scrollDistance = delayedProgress * maxScroll;
-            } else if (wrapperTop + wrapperHeight <= viewportHeight) {
-                // Past the end - keep at max scroll to prevent jumping
-                scrollDistance = maxScroll;
-            }
-        }
-        
-        scrollContent.style.transform = `translateY(-50%) translateX(-${scrollDistance}px)`;
-    }
-    
-    // Throttle scroll for better performance
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                updateHorizontalScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-    
-    window.addEventListener('resize', () => {
-        calculateMaxScroll();
-        updateHorizontalScroll();
-    });
-    
-    // Initial call after a short delay
-    setTimeout(updateHorizontalScroll, 200);
 });

@@ -42,7 +42,11 @@
 }
 
 .work-experience-section h1 {
-    margin-bottom: 40px;
+    margin-bottom: 0;
+}
+
+.work-experience-section .content-header {
+    margin-bottom: 100px;
 }
 
 .work-experience-grid {
@@ -60,6 +64,7 @@
     background-color: transparent;
     z-index: 1;
     margin-top: 160px;
+    height: 48px;
 }
 
 /* White background + border — sits above images (z-index:-1) but below text (z-index:1) */
@@ -246,7 +251,7 @@ a.work-card {
     display: block;
     text-decoration: none;
     color: inherit;
-    height: 50px;
+    /* height: 50px; */
 }
 
 .work-card:hover h3,
@@ -288,7 +293,7 @@ a.work-card {
    ========================================= */
 .community-section {
     margin-top: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 0;
 }
 
 .community-section h1 {
@@ -479,16 +484,89 @@ a.work-card {
    Responsive — Work Experience Cards
    ========================================= */
 @media (max-width: 768px) {
+    .work-experience-section h1 {
+        margin-bottom: 80px;
+    }
+
     .work-experience-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 130px;
     }
 
     .work-card {
         margin-top: 100px;
+        /* height: 100px; */
     }
 
     .work-card--nook {
         margin-bottom: 40px;
+        /* height: 100px; */
+    }
+
+    .work-experience-section .leaf-decoration {
+        display: none;
+    }
+
+    /* Reset the 480px scale so images start at natural size */
+    .work-card-img {
+        transform: none;
+        transform-origin: center bottom;
+    }
+
+    /* Disable hover, use .active class instead */
+    .work-card:hover::before { background-color: transparent; }
+    .work-card:hover h3,
+    .work-card:hover .work-role,
+    .work-card:hover .work-date { color: var(--color-foreground); }
+    .work-card--nook:hover .work-card-img--nook-behind,
+    .work-card--nook:hover .work-card-img--nook-front,
+    .work-card--paibox:hover .work-card-img--paibox,
+    .work-card--paibox:hover .work-card-img--paibox-back,
+    .work-card--superrent:hover .work-card-img--superrent,
+    .work-card--superrent:hover .work-card-img--superrent2,
+    .work-card--superrent:hover .work-card-img--superrent3,
+    .work-card--xa:hover .work-card-img--xa,
+    .work-card--xa:hover .work-card-img--xa2,
+    .work-card--gds:hover .work-card-img--gds,
+    .work-card--sweetdreams:hover .work-card-img--sweetdreams { transform: none; }
+
+    /* .active triggers the animation on scroll */
+    .work-card.active::before { background-color: var(--color-foreground); }
+    .work-card.active h3,
+    .work-card.active .work-role,
+    .work-card.active .work-date { color: var(--color-background); }
+    .work-card--nook.active .work-card-img--nook-behind { transform: rotate(-4deg) translateY(-6px); }
+    .work-card--nook.active .work-card-img--nook-front { transform: rotate(8deg) translateY(0px); }
+    .work-card--paibox.active .work-card-img--paibox { transform: rotate(4deg) translateY(-6px); }
+    .work-card--paibox.active .work-card-img--paibox-back { transform: rotate(-6deg) translateY(-6px); }
+    .work-card--superrent.active .work-card-img--superrent { transform: rotate(-6deg) translateY(0px); }
+    .work-card--superrent.active .work-card-img--superrent2 { transform: rotate(6deg) translateY(0px); }
+    .work-card--superrent.active .work-card-img--superrent3 { transform: translateY(-6px); }
+    .work-card--xa.active .work-card-img--xa { transform: rotate(5deg) translateY(0px); }
+    .work-card--xa.active .work-card-img--xa2 { transform: rotate(-5deg) translateY(0px); }
+    .work-card--gds.active .work-card-img--gds { transform: translateY(8px); }
+    .work-card--sweetdreams.active .work-card-img--sweetdreams { transform: translateY(8px); }
+
+    .community-content h3 {
+        font-size: 20px;
+    }
+
+    .community-item {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-card {
+        margin-top: 80px;
+    }
+
+    .work-card h3 {
+        font-size: 18px;
+    }
+
+    .work-card-header {
+        flex-direction: row;
+        align-items: baseline;
     }
 }

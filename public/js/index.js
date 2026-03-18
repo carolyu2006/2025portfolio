@@ -71,6 +71,38 @@ headerLinks.forEach(link => {
     });
 });
 
+// Work card scroll animation on mobile — only the card closest to viewport center gets .active
+if (window.matchMedia('(max-width: 768px)').matches) {
+    const workCards = document.querySelectorAll('.work-card');
+
+    function updateActiveWorkCard() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestCard = null;
+        let closestDist = Infinity;
+
+        workCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const dist = Math.abs(cardCenter - viewportCenter);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestCard = card;
+            }
+        });
+
+        workCards.forEach(card => {
+            if (card === closestCard) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveWorkCard, { passive: true });
+    updateActiveWorkCard();
+}
+
 // Directional swipe effect for project items
 document.addEventListener('DOMContentLoaded', () => {
     const projectItems = document.querySelectorAll('.projects-item');

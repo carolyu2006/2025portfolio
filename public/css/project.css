@@ -206,6 +206,7 @@ section h2 {
 .overview-image-container video {
     /* width: 100%; */
     min-width: 200px;
+    max-width: 100%;
     height: 100%;
     max-height: 600px;
     /* object-fit: cover; */
@@ -1014,10 +1015,67 @@ section h2 {
 /* ─────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+    .content {
+        width: calc(100vw - 2 * var(--margin-x));
+        max-width: 900px;
+        gap: 60px;
+    }
+
+    .hero-image {
+        height: 50vh;
+    }
+
+    .project-header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .key-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .key-info-item {
+        width: 100%;
+    }
+
+    .overview-container {
+        flex-direction: column;
+    }
+
+    .overview-container img {
+        width: 100%;
+    }
+
+    .overview-card-container {
+        flex-direction: column;
+    }
+
+    .overview-card {
+        width: calc(100% - 40px);
+    }
+
+    .problem-research-container {
+        grid-template-columns: 1fr;
+    }
+
+    .visual-design-container {
+        grid-template-columns: 1fr;
+    }
+
+    .two-column-container {
+        grid-template-columns: 1fr;
+    }
+
     .features-container {
         flex-direction: column;
         align-items: flex-start;
         gap: 16px;
+    }
+
+    .features-container-two {
+        flex-direction: column;
     }
 
     .feature-item {
@@ -1044,5 +1102,13 @@ section h2 {
 
     .interview-insights-container {
         grid-template-columns: 1fr;
+    }
+
+    .notes-container {
+        width: calc(100% - 40px);
+    }
+
+    .button-container .button {
+        width: 100%;
     }
 }

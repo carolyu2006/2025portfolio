@@ -311,6 +311,18 @@ section {
         flex-direction: column;
     }
 
+    .project-item-container {
+        min-width: 0;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .main-content {
+        margin: var(--margin-y) var(--margin-x);
+        margin-top: 120px;
+    }
 }
 
 @media (max-width: 680px) {
@@ -319,4 +331,8 @@ section {
 
 
 
-@media (max-width: 560px) {}
+@media (max-width: 560px) {
+    .project-item h2 {
+        font-size: 28px;
+    }
+}
