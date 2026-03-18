@@ -297,6 +297,7 @@
                 <img class="project-wide-image" src="/assets/images/projects/intertabs/research1.png"
                     alt="design research" style="background-color: #f8f8f8;">
             </section>
+
             <div class="problem-statement-container">
                 <div class="problem-statement" style="background-color: #FFB0A3;">
                     <h3><b style="margin-right: 10px;">Conclusion:</b> Create a clear and simple tool that helps users
@@ -307,11 +308,13 @@
             <!-- Process -->
             <section class="process-section">
                 <h2>PROCESS</h2>
-                <h3>
+                <br>
+                <h3>Prototyping, testing, and iterating on the design.</h3>
+                <p>
                     From early product thinking in Figma to prototype reviews and real-world testing, I iterated on the
                     information architecture, interaction flow, and visual system before finalizing the extension
                     experience.
-                </h3>
+                </p>
 
                 <div class="process-layout">
                     <div class="process-figma">
@@ -326,11 +329,9 @@
                             alt="interTabs interface review in Figma">
                     </div>
                 </div>
-            </section>
+                <br>
 
-            <!-- Visual Design -->
-            <section>
-                <h2>VISUAL DESIGN</h2>
+                <h3>VISUAL DESIGN</h3>
                 <img class="content-wide" src="/assets/images/projects/intertabs/logodesign.png" alt="visual design">
 
                 <div class="visual-design-container">
@@ -341,8 +342,35 @@
                     <img src="/assets/images/projects/intertabs/intertabs_d.jpg" alt="visual design">
                 </div>
             </section>
+            <section>
 
-            <!-- Final Demo -->
+            <h2>DESIGN DECISIONS</h2>
+                <p>I rethought how tab management should work from the ground up, deciding on what features to include and what to cut.</p>
+
+                <p><b style="margin-right: 10px;">The core design focus were:</b></p>
+
+                <div style="display: flex; flex-direction: row; gap: 24px; margin-top: 32px;">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #fff2f0;">
+                        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ff6952;">01</span>
+                        <h3 style="margin: 0;">Information Architecture</h3>
+                        <p style="color: var(--color-gray); line-height: 1.65; margin: 0; font-size: 14px;">Rather than presenting tabs as a flat linear list, I introduced hierarchical grouping — tabs have structure and logical relationships, not just order. This was the core shift that made interTabs feel fundamentally different from native tab management.</p>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #fff2f0;">
+                        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ff6952;">02</span>
+                        <h3 style="margin: 0;">Reducing Switching Cost</h3>
+                        <p style="color: var(--color-gray); line-height: 1.65; margin: 0; font-size: 14px;">The design prioritises fast location — getting users to the right tab immediately without hunting. Visual distinction and structural grouping let users scan and identify targets at a glance, cutting the time lost bouncing between tabs.</p>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 24px; background: #fff2f0;">
+                        <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ff6952;">03</span>
+                        <h3 style="margin: 0;">Lightweight &amp; Non-Intrusive</h3>
+                        <p style="color: var(--color-gray); line-height: 1.65; margin: 0; font-size: 14px;">Because interTabs is a high-frequency tool, I kept the interface intentionally restrained. No visual noise, no unnecessary prompts — users stay focused on their actual work, not on managing the manager.</p>
+                    </div>
+                </div>
+                <br>
+
+                <p><b style="margin-right: 10px;">What got cut:</b> Early concepts included deep customization for how AI groups tabs, and push notifications reminding users to save open sessions before closing. Both were dropped — they added friction to an experience that needed to feel effortless.</p>
+
+            </section>
             <section>
                 <h2>Video Demo</h2>
                 <iframe src="https://www.youtube.com/embed/2bHR0zIa2yA" title="YouTube video player" frameborder="0"
@@ -350,6 +378,30 @@
                     allowfullscreen>
                 </iframe>
             </section>
+
+            <!-- Reflection -->
+            <section>
+                <h2>REFLECTION</h2>
+                <h3>Building interTabs clarified something I'll carry into every project: the real challenge in
+                    productivity design isn't adding capability — it's reducing cognitive load.</h3>
+
+                <div class="analysis-items-grid" style="margin-top: 32px;">
+                    <div class="analysis-item" style="border-left: 4px solid #FFB0A3;">
+                        <h3>The Core Tradeoff</h3>
+                        <p>More features mean more control — but also a steeper learning curve. I chose to protect the
+                            simplicity of the core experience first. A tool people actually use daily is worth more than
+                            a fully-featured one that feels like a chore.</p>
+                    </div>
+                    <div class="analysis-item" style="border-left: 4px solid #FFB0A3;">
+                        <h3>Design Value = Faster Decisions</h3>
+                        <p>The value of design here wasn't making things look clean — it was helping users make faster
+                            decisions. Every layout choice, every label, every grouping was evaluated by one question:
+                            does this help the user decide <em>less</em>?</p>
+                    </div>
+                </div>
+            </section>
+
+            
 
             <section class="next-project-section">
                 <h1 style="font-size: 24px;">More Projects</h1>
