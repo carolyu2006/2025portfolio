@@ -415,25 +415,66 @@ section {
 
     .head-section {
         flex-direction: column;
-        gap: 30px;
+        gap: 24px;
+    }
+
+    /* Profile card: full-width square image, no background, hide text */
+    .head-item-image-container {
+        background: none;
+        padding: 0;
+        width: 100%;
     }
 
     .head-item-image {
         width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: 0;
     }
 
-    .head-item-image-container {
-        width: calc(100% - 40px);
+    .head-item-image-container h1,
+    .head-item-image-container h3,
+    .head-item-image-container br,
+    .head-email {
+        display: none;
     }
 
+    /* All section headings */
+    .content h1 {
+        font-size: 32px;
+    }
+
+    /* Bio section greeting */
     .head-container h1 {
-        font-size: 28px;
-        margin-top: 20px;
+        font-size: 26px !important;
+        margin-top: 0 !important;
     }
 
+    .head-description {
+        font-size: 15px;
+    }
+
+    /* Education compact */
+    .education {
+        flex-direction: column;
+        gap: 1px;
+        margin-bottom: 4px;
+    }
+
+    .education-label {
+        width: auto;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    /* Social links */
     .head-social-links {
-        grid-template-columns: 1fr;
-        gap: 8px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 20px;
+    }
+
+    .head-social-links a {
+        font-size: 15px;
     }
 
     .more-about-section {
@@ -464,7 +505,55 @@ section {
     }
 
     .skill-container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px var(--margin-x) 20px;
+        margin: 0 calc(-1 * var(--margin-x));
+        scrollbar-width: none;
+    }
+
+    .skill-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .skill-category {
+        flex: none;
+        width: 65vw;
+        height: 280px;
+        overflow: hidden;
+        padding: 20px 16px;
+        scroll-snap-align: center;
+    }
+
+    .skill-category:nth-child(1),
+    .skill-category:nth-child(2),
+    .skill-category:nth-child(3) {
+        transform: none;
+        z-index: auto;
+    }
+
+    .skill-category h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .skill-list {
+        height: 80%;
+        padding: 8px;
+    }
+
+    .skill-list h3 {
+        font-size: 12px;
+        margin-top: 8px;
+        margin-bottom: 2px;
+    }
+
+    .skill-list p {
+        font-size: 11px;
     }
 
     .skills-section {

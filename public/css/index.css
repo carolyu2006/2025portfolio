@@ -685,7 +685,7 @@ a.play-item-wrapper {
         aspect-ratio: 16/9;
         object-fit: cover;
         order: -1;
-        border-radius: 12px;
+        border-radius: 0;
     }
 
     .projects-item-content {
@@ -702,7 +702,9 @@ a.play-item-wrapper {
 
     .projects-item .project-meta {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 0;
+        margin-top: 8px;
+        order: 1;
     }
 
     .projects-item .project-meta-tags {
@@ -723,11 +725,7 @@ a.play-item-wrapper {
     }
 
     .projects-item h4 {
-        display: block;
-        font-size: 12px;
-        color: var(--color-gray);
-        font-weight: 400;
-        margin: 0 0 4px 0;
+        display: none;
     }
 
     .projects-item h2 {

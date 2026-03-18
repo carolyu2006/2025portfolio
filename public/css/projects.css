@@ -161,6 +161,16 @@ section {
     overflow: hidden;
 }
 
+.project-item-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+
+.project-item-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
 .project-item-image {
     width: 100%;
     margin-top: 5vh;
@@ -313,6 +323,37 @@ section {
 
     .project-item-container {
         min-width: 0;
+        border-radius: 0;
+    }
+
+    .project-item-container:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .project-item-container h4 {
+        display: none;
+    }
+
+    .project-item-side {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .project-item-side p {
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        border: 1px solid var(--color-gray);
+        color: var(--color-gray);
     }
 
     .content {

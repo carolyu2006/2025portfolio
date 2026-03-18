@@ -144,6 +144,38 @@ document.addEventListener('DOMContentLoaded', function () {
     update();
 });
 
+// Work card scroll animation on mobile — card closest to viewport center gets .active
+if (window.matchMedia('(max-width: 768px)').matches) {
+    const workCards = document.querySelectorAll('.work-card');
+
+    function updateActiveWorkCard() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestCard = null;
+        let closestDist = Infinity;
+
+        workCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const dist = Math.abs(cardCenter - viewportCenter);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestCard = card;
+            }
+        });
+
+        workCards.forEach(card => {
+            if (card === closestCard) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveWorkCard, { passive: true });
+    updateActiveWorkCard();
+}
+
 // Community section — expand/collapse (whole row clickable)
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.community-item').forEach(function (item) {

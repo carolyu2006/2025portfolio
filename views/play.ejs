@@ -25,8 +25,123 @@
                 <button class="filter-btn" data-filter="art">art</button>
                 </div>
             </div>
+            <!-- Featured Game Spotlight (visible when "game" filter active) -->
+            <div class="play-featured hidden" id="play-featured">
+                <div class="play-featured-left">
+                    <div class="play-featured-main">
+                        <button class="play-featured-arrow play-featured-arrow--left" id="featured-prev"></button>
+                        <video id="featured-main-video" src="/assets/images/covers/everstream.mov" poster="/assets/images/covers/everstream.png" autoplay muted loop playsinline preload="metadata"></video>
+                        <img id="featured-main-img" src="" alt="Everstream" style="display:none;">
+                        <button class="play-featured-arrow play-featured-arrow--right" id="featured-next"></button>
+                    </div>
+                    <div class="play-featured-thumbs" id="featured-thumbs">
+                        <div class="play-featured-thumb active" data-type="video" data-src="/assets/images/covers/everstream.mov" data-poster="/assets/images/covers/everstream.png">
+                            <img src="/assets/images/covers/everstream.png" alt="video">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui1.png">
+                            <img src="/assets/images/projects/everstream/ui1.png" alt="ui1">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui2.png">
+                            <img src="/assets/images/projects/everstream/ui2.png" alt="ui2">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui3.png">
+                            <img src="/assets/images/projects/everstream/ui3.png" alt="ui3">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui4.png">
+                            <img src="/assets/images/projects/everstream/ui4.png" alt="ui4">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui5.png">
+                            <img src="/assets/images/projects/everstream/ui5.png" alt="ui5">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui6.png">
+                            <img src="/assets/images/projects/everstream/ui6.png" alt="ui6">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui7.png">
+                            <img src="/assets/images/projects/everstream/ui7.png" alt="ui7">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/everstream/ui8.png">
+                            <img src="/assets/images/projects/everstream/ui8.png" alt="ui8">
+                        </div>
+                    </div>
+                </div>
+                <div class="play-featured-info">
+                    <h4>2025</h4>
+                    <h2>Everstream</h2>
+                    <h3>Game Designer & Developer</h3>
+                    <p>A 2D game depicting the journey of the four seasons along a stream. Everstream is a contemplative platformer where the player follows a leaf drifting along a stream through spring, summer, autumn, and winter — each season bringing new visuals, mechanics, and emotional textures.</p>
+                    <a class="play-featured-btn" href="/projects/everstream">Read More</a>
+                </div>
+            </div>
+
+            <!-- Featured Code Spotlight (visible when "code" filter active) -->
+            <div class="play-featured hidden" id="play-featured-code">
+                <div class="play-featured-left">
+                    <div class="play-featured-main">
+                        <button class="play-featured-arrow play-featured-arrow--left"></button>
+                        <img class="featured-main-display" id="featured-code-img" src="/assets/images/experience/sweetdreams-behind.png" alt="Freelance">
+                        <button class="play-featured-arrow play-featured-arrow--right"></button>
+                    </div>
+                    <div class="play-featured-thumbs">
+                        <div class="play-featured-thumb active" data-type="image" data-src="/assets/images/experience/sweetdreams-behind.png">
+                            <img src="/assets/images/experience/sweetdreams-behind.png" alt="Sweet Dreams">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/experience/gds-behind.png">
+                            <img src="/assets/images/experience/gds-behind.png" alt="GDS">
+                        </div>
+                    </div>
+                </div>
+                <div class="play-featured-info">
+                    <h4>2025</h4>
+                    <h2>Freelance Web Dev & Design</h2>
+                    <h3>Designer & Front-End Developer</h3>
+                    <p>Freelance web development and design work for clients including Sweet Dreams 4 All, a non-profit organization, and Global Delta Securities, a financial services firm. Responsible for the full design and front-end development of both websites.</p>
+                    <div class="play-featured-info-links">
+                        <a class="play-featured-btn" href="https://sweetdreams4all.org/" target="_blank" rel="noopener noreferrer">Sweet Dreams 4 All</a>
+                        <a class="play-featured-btn" href="https://globaldeltasecurities.com/" target="_blank" rel="noopener noreferrer">Global Delta Securities</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured XR Spotlight (visible when "xr" filter active) -->
+            <div class="play-featured hidden" id="play-featured-xr">
+                <div class="play-featured-left">
+                    <div class="play-featured-main">
+                        <button class="play-featured-arrow play-featured-arrow--left" data-gallery="xr-prev"></button>
+                        <img class="featured-main-display" id="featured-xr-img" src="/assets/images/covers/dreamail.png" alt="DREAMMAIL">
+                        <button class="play-featured-arrow play-featured-arrow--right" data-gallery="xr-next"></button>
+                    </div>
+                    <div class="play-featured-thumbs" id="featured-xr-thumbs">
+                        <div class="play-featured-thumb active" data-type="image" data-src="/assets/images/covers/dreamail.png">
+                            <img src="/assets/images/covers/dreamail.png" alt="cover">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/dreammail/2.png">
+                            <img src="/assets/images/projects/dreammail/2.png" alt="2">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/dreammail/3.png">
+                            <img src="/assets/images/projects/dreammail/3.png" alt="3">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/dreammail/4.png">
+                            <img src="/assets/images/projects/dreammail/4.png" alt="4">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/dreammail/5.png">
+                            <img src="/assets/images/projects/dreammail/5.png" alt="5">
+                        </div>
+                        <div class="play-featured-thumb" data-type="image" data-src="/assets/images/projects/dreammail/6.png">
+                            <img src="/assets/images/projects/dreammail/6.png" alt="6">
+                        </div>
+                    </div>
+                </div>
+                <div class="play-featured-info">
+                    <h4>2026</h4>
+                    <h2>DREAMMAIL</h2>
+                    <h3>Designer & Developer</h3>
+                    <p>A spatial AR interface for everyday digital tools, powered by AI-driven interaction.</p>
+                    <a class="play-featured-btn" href="https://devpost.com/software/dreamail" target="_blank" rel="noopener noreferrer">Read More</a>
+                </div>
+            </div>
+
             <div class="play-container">
-                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="game" href="/projects/everstream">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="game" data-featured="everstream" href="/projects/everstream">
                     <div class="play-item-info">
                         <h4>2025</h4>
                         <h2>Everstream</h2>
@@ -35,7 +150,7 @@
                     </div>
                     <video class="play-item" src="/assets/images/covers/everstream.mov" poster="/assets/images/covers/everstream.png" autoplay muted loop playsinline preload="metadata"></video>
                 </a>
-                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="xr" href="https://devpost.com/software/dreamail" target="_blank" rel="noopener noreferrer">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="xr" data-featured="dreammail" href="https://devpost.com/software/dreamail" target="_blank" rel="noopener noreferrer">
                     <div class="play-item-info">
                         <h4>2026</h4>
                         <h2>DREAMMAIL</h2>
@@ -110,6 +225,10 @@
                     <video class="play-item" src="/assets/images/play/xa.mov" alt="xa" autoplay muted loop playsinline
                         preload="metadata"></video>
                 </div>
+                <div class="play-item-wrapper" data-tag="design">
+                    <img class="play-item" src="/assets/images/projects/everstream/ui7.png" alt="Everstream UI">
+                </div>
+                
                 <a class="play-item-wrapper" data-tag="code" href="https://youtu.be/Bqjvh_u7IWU" target="_blank"
                     rel="noopener noreferrer">
                     <video class="play-item" src="/assets/images/play/musicLooper.mp4" alt="MusicLooper" autoplay muted
@@ -126,7 +245,7 @@
                 <div class="play-item-wrapper" data-tag="code">
                     <img class="play-item" src="/assets/images/play/NeoAssistant.png" alt="NeoAssistant">
                 </div>
-                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" href="https://sweetdreams4all.org/" target="_blank" rel="noopener noreferrer">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" data-featured="freelance" href="https://sweetdreams4all.org/" target="_blank" rel="noopener noreferrer">
                     <div class="play-item-info">
                         <h4>2025</h4>
                         <h2>Sweet Dream 4 All</h2>
@@ -134,7 +253,7 @@
                     </div>
                     <img class="play-item" src="/assets/images/experience/sweetdreams-behind.png" alt="Sweet Dream 4 All">
                 </a>
-                <div class="play-item-wrapper" data-tag="animation">
+                <div class="play-item-wrapper" data-tag="art">
                     <video class="play-item" src="/assets/images/play/TheFalseTurn.mov" alt="TheFalseTurn" autoplay
                         muted loop playsinline preload="metadata"></video>
                 </div>
@@ -157,7 +276,7 @@
                 <div class="play-item-wrapper" data-tag="art">
                     <img class="play-item" src="/assets/images/play/art2.png" alt="art2">
                 </div>
-                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" href="https://globaldeltasecurities.com/" target="_blank" rel="noopener noreferrer">
+                <a class="play-item-wrapper swipe play-item-info-wrapper" data-tag="code" data-featured="freelance" href="https://globaldeltasecurities.com/" target="_blank" rel="noopener noreferrer">
                     <div class="play-item-info">
                         <h4>2025</h4>
                         <h2>Global Delta Securities</h2>
