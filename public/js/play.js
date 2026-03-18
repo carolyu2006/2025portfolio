@@ -12,40 +12,42 @@ document.addEventListener('DOMContentLoaded', () => {
         code: { el: featuredCode, key: 'freelance' }
     };
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    function applyFilter(filter) {
+        filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
 
-            const filter = btn.dataset.filter;
-
-            // Show/hide featured spotlights
-            Object.keys(featuredMap).forEach(tag => {
-                var f = featuredMap[tag];
-                if (f.el) {
-                    if (filter === tag) {
-                        f.el.classList.remove('hidden');
-                    } else {
-                        f.el.classList.add('hidden');
-                    }
-                }
-            });
-
-            items.forEach(item => {
-                // Hide featured items from grid when their filter is active
-                var entry = featuredMap[filter];
-                if (entry && item.dataset.featured === entry.key) {
-                    item.classList.add('hidden');
-                    return;
-                }
-                if (filter === 'all' || item.dataset.tag === filter) {
-                    item.classList.remove('hidden');
+        // Show/hide featured spotlights
+        Object.keys(featuredMap).forEach(tag => {
+            var f = featuredMap[tag];
+            if (f.el) {
+                if (filter === tag) {
+                    f.el.classList.remove('hidden');
                 } else {
-                    item.classList.add('hidden');
+                    f.el.classList.add('hidden');
                 }
-            });
+            }
         });
+
+        items.forEach(item => {
+            var entry = featuredMap[filter];
+            if (entry && item.dataset.featured === entry.key) {
+                item.classList.add('hidden');
+                return;
+            }
+            if (filter === 'all' || item.dataset.tag === filter) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
     });
+
+    // Apply tag from URL param (e.g. /play?tag=game)
+    const urlTag = new URLSearchParams(window.location.search).get('tag');
+    if (urlTag) applyFilter(urlTag);
 });
 
 // Reusable gallery initializer (supports video + image)

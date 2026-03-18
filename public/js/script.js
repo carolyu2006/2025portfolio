@@ -294,8 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Project side navigation
+// Project side navigation — only on individual project pages
 document.addEventListener('DOMContentLoaded', () => {
+    const isProjectPage = document.querySelector('link[href="/css/project.css"]');
+    if (!isProjectPage) return;
+
     const content = document.querySelector('.content');
     if (!content) return;
 

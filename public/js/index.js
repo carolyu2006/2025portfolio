@@ -269,3 +269,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// "i also do..." tag hover previews + auto-cycle
+document.addEventListener('DOMContentLoaded', () => {
+    const btns = Array.from(document.querySelectorAll('.also-do-btn[data-tag]'));
+    const preview = document.querySelector('.also-do-preview');
+    const panels = document.querySelectorAll('.also-do-panel');
+    if (!preview || !btns.length) return;
+
+    const tags = btns.map(b => b.dataset.tag);
+    let currentIndex = 0;
+    let cycleInterval = null;
+    let isHovering = false;
+
+    function showTag(tag) {
+        btns.forEach(b => b.classList.toggle('active', b.dataset.tag === tag));
+        panels.forEach(p => p.classList.toggle('visible', p.dataset.panel === tag));
+        preview.classList.add('open');
+        currentIndex = tags.indexOf(tag);
+    }
+
+    function advance() {
+        currentIndex = (currentIndex + 1) % tags.length;
+        showTag(tags[currentIndex]);
+    }
+
+    function startCycle() {
+        if (cycleInterval) return;
+        cycleInterval = setInterval(advance, 4000);
+    }
+
+    function stopCycle() {
+        clearInterval(cycleInterval);
+        cycleInterval = null;
+    }
+
+    // Start immediately with first tag visible
+    showTag(tags[0]);
+    startCycle();
+
+    btns.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            isHovering = true;
+            stopCycle();
+            showTag(btn.dataset.tag);
+        });
+        btn.addEventListener('mouseleave', () => {
+            isHovering = false;
+            // small delay so moving into the preview doesn't restart yet
+            setTimeout(() => { if (!isHovering) startCycle(); }, 200);
+        });
+    });
+
+    preview.addEventListener('mouseenter', () => {
+        isHovering = true;
+        stopCycle();
+    });
+    preview.addEventListener('mouseleave', () => {
+        isHovering = false;
+        setTimeout(() => { if (!isHovering) startCycle(); }, 200);
+    });
+});
