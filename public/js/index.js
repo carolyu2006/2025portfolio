@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startCycle() {
         if (cycleInterval) return;
-        cycleInterval = setInterval(advance, 4000);
+        cycleInterval = setInterval(advance, 3000);
     }
 
     function stopCycle() {
@@ -327,5 +327,23 @@ document.addEventListener('DOMContentLoaded', () => {
     preview.addEventListener('mouseleave', () => {
         isHovering = false;
         setTimeout(() => { if (!isHovering) startCycle(); }, 200);
+    });
+
+    // Wrap each also-do-item in a swipe wrapper and wire up hover + click
+    document.querySelectorAll('.also-do-panel').forEach(panel => {
+        const tag = panel.dataset.panel;
+        panel.querySelectorAll('.also-do-item').forEach(item => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'also-do-item-wrapper';
+            wrapper.style.height = item.style.height || '';
+            item.parentNode.insertBefore(wrapper, item);
+            wrapper.appendChild(item);
+
+            wrapper.classList.add('cursor-hover');
+
+            wrapper.addEventListener('click', () => {
+                window.location.href = '/play?tag=' + tag;
+            });
+        });
     });
 });

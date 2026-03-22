@@ -456,3 +456,110 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// ===== Scroll Reveal =====
+(function () {
+    var SELECTORS = [
+        // Shared
+        '.content-header',
+        // Index
+        '.projects-item',
+        '.about-section',
+        '.also-do-section',
+        // About
+        '.head-section',
+        '.community-item',
+        '.skill-category',
+        // Projects listing
+        '.project-item',
+        // Play
+        '.play-item-wrapper',
+        '.play-header',
+        '.play-featured',
+        // Project detail pages
+        '.project-header-container',
+        '.key-info',
+        '.overview-card',
+        '.feature-item',
+        '.problem-statement-container',
+        '.analysis-item',
+        '.analysis-block',
+        '.features-container',
+    ].join(', ');
+
+    var outsideDesign = document.querySelector('#outside-design');
+
+    var elements = Array.from(document.querySelectorAll(SELECTORS)).filter(function (el) {
+        return !outsideDesign || !outsideDesign.contains(el);
+    });
+
+    // Stagger siblings that share the same parent
+    var parentMap = new Map();
+    elements.forEach(function (el) {
+        var p = el.parentElement;
+        if (!parentMap.has(p)) parentMap.set(p, []);
+        parentMap.get(p).push(el);
+    });
+    parentMap.forEach(function (children) {
+        if (children.length > 1) {
+            children.forEach(function (child, i) {
+                child.style.transitionDelay = Math.min(i * 0.06, 0.24) + 's';
+            });
+        }
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px 60px 0px' });
+
+    elements.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            // Already visible on load — reveal immediately without animation
+            el.classList.add('reveal', 'in-view');
+        } else {
+            el.classList.add('reveal');
+            observer.observe(el);
+        }
+    });
+
+    // Work cards — earlier trigger so they animate in before fully entering view
+    var workCards = Array.from(document.querySelectorAll('.work-card'));
+    var workParentMap = new Map();
+    workCards.forEach(function (el) {
+        var p = el.parentElement;
+        if (!workParentMap.has(p)) workParentMap.set(p, []);
+        workParentMap.get(p).push(el);
+    });
+    workParentMap.forEach(function (children) {
+        if (children.length > 1) {
+            children.forEach(function (child, i) {
+                child.style.transitionDelay = Math.min(i * 0.06, 0.24) + 's';
+            });
+        }
+    });
+
+    var workObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                workObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
+
+    workCards.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            el.classList.add('reveal', 'in-view');
+        } else {
+            el.classList.add('reveal');
+            workObserver.observe(el);
+        }
+    });
+})();

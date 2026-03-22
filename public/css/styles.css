@@ -358,9 +358,6 @@ button:hover {
     border-bottom: 2px solid var(--color-foreground);
 }
 
-.header-middle a.nav-link--work.active {
-    border-bottom: 2px solid transparent;
-}
 
 .header-title {
     font-family: 'ArchivoBlack', sans-serif;
@@ -1381,4 +1378,23 @@ footer {
     .header-mobile-nav .nav-link.active {
         text-decoration: underline;
     }
+}
+
+/* ===== Scroll Reveal ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Higher-specificity overrides for elements whose own CSS sets opacity/transform */
+.projects-item.reveal:not(.in-view) {
+    opacity: 0;
+    transform: translateY(28px);
 }

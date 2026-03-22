@@ -97,10 +97,10 @@
     </div>
     <script>
         (function () {
-            var path = window.location.pathname;
-            document.querySelectorAll('.header-middle .nav-link').forEach(function (link) {
-                var href = link.getAttribute('href');
-                if (href === path || (href === '/' && (path === '/' || path === '')) || (href === '/#project' && (path === '/' || path === ''))) {
+            var path = window.location.pathname.replace(/\/$/, '') || '/';
+            document.querySelectorAll('.header-middle .nav-link, .header-mobile-nav .nav-link').forEach(function (link) {
+                var href = link.getAttribute('href').replace(/\/$/, '') || '/';
+                if (href === path || (href === '/#project' && (path === '/' || path === ''))) {
                     link.classList.add('active');
                 }
             });
