@@ -3,17 +3,11 @@ const express = require('express');
 const parser = require ('body-parser');
 const encodedparser = parser.urlencoded({extended: true});
 
-const multer = require ('multer');
-// const uploadProcessor = multer({ dest: 'public/uploads/' });
-
 const app = express();
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(encodedparser);
-
-let posts = [];
-let postIdCounter = 1;
 
 app.get('/', (request, response) => {
     response.render('index');
