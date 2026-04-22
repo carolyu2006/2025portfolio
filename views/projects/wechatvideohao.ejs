@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChat Channels · AI</title>
+    <link rel="icon" type="image/png" href="/assets/images/main/logo.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/project.css">
+    <style>
+        .slides-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .section-header-row {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .lang-toggle {
+            position: relative;
+            display: inline-flex;
+            margin-left: auto;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .lang-toggle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: var(--color-black);
+            border-radius: 6px;
+            transform: translateX(0);
+            transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 0;
+        }
+
+        .lang-toggle[data-active="zh"]::before {
+            transform: translateX(100%);
+        }
+
+        .lang-toggle button {
+            position: relative;
+            z-index: 1;
+            border: none;
+            background: transparent;
+            padding: 10px 22px;
+            height: 40px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--color-black);
+            transition: color 0.3s ease;
+        }
+
+        .lang-toggle button.active {
+            color: var(--color-white);
+        }
+
+        .slides-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            background: #000;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slides-gallery img.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .reflection-card {
+            border: 1px solid #111;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .reflection-card h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .reflection-card p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .reflection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+</style>
+</head>
+
+<body>
+    <%- include('../components/header-new.ejs') %>
+
+        <img class="hero-image" src="/assets/images/projects/wechat-videohao/cover.png"
+            alt="WeChat Channels AI case study cover">
+
+        <div class="content">
+            <div class="project-header-container">
+                <div class="project-header">
+                    <h4 class="tag" style="background-color: #FFE4C2;">2026</h4>
+
+                    <h1>WeChat Channels × AI</h1>
+                    <h3>An interview-stage design task for the Tencent WeChat Channels team — rethinking video
+                        creation with AI, moving from clip assembly toward true co-creation. This proposal led to a
+                        successful offer from Tencent.</h3>
+                </div>
+                <div class="button-container">
+                    <button class="button"
+                        onclick="window.open('/assets/pdfs/wechat-channels-en.pdf', '_blank')">View PDF (EN)</button>
+                    <button class="button"
+                        onclick="window.open('/assets/pdfs/wechat-channels-zh.pdf', '_blank')">View PDF (中文)</button>
+                </div>
+            </div>
+
+            <div class="key-info">
+                <div class="key-info-item">
+                    <h3>TIMELINE</h3>
+                    <p>Mar 2026</p>
+                </div>
+                <div class="key-info-item">
+                    <h3>TEAM</h3>
+                    <p>Solo</p>
+                </div>
+                <div class="key-info-item">
+                    <h3>ROLE</h3>
+                    <p>Product Designer</p>
+                </div>
+                <div class="key-info-item">
+                    <h3>SKILLS</h3>
+                    <p>Figma, AI Product Design</p>
+                </div>
+            </div>
+
+            <div class="problem-statement-container">
+                <div class="problem-statement" style="background-color: #FFE4C2;">
+                    <h3>How can AI reshape the entire creation flow of WeChat Channels, rather than only optimizing
+                        single-point tools?</h3>
+                </div>
+            </div>
+
+            <section>
+                <h2>FIGMA PROTOTYPE</h2>
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1); width: 100%; height: 75vh; margin-top: 12px;"
+                    src="https://embed.figma.com/proto/fvgooKpozMN5v0OeOpOQcc/%E5%BE%AE%E4%BF%A1%E8%A7%86%E9%A2%91%E5%8F%B7?node-id=34-64&viewport=-524%2C382%2C0.12&scaling=scale-down&content-scaling=fixed&starting-point-node-id=34%3A64&page-id=34%3A63&embed-host=share"
+                    loading="lazy" allowfullscreen></iframe>
+            </section>
+
+            <section>
+                <div class="section-header-row">
+                    <h2>DESIGN PROPOSAL</h2>
+                    <div class="lang-toggle" role="tablist" aria-label="Slide language" data-active="en">
+                        <button type="button" class="active" data-lang="en">EN</button>
+                        <button type="button" data-lang="zh">中文</button>
+                    </div>
+                </div>
+                <div class="slides-gallery">
+                    <% for (let i=1; i <=13; i++) { %>
+                        <img data-slide="<%= i %>" src="/assets/images/projects/wechat-videohao/en/slide-<%= i %>.png"
+                            alt="WeChat Channels AI slide <%= i %>">
+                        <% } %>
+                </div>
+            </section>
+
+            <section>
+                <h2>REFLECTION</h2>
+                <div class="reflection-grid">
+                    <div class="reflection-card">
+                        <h3>AI is Copilot, Not Autopilot</h3>
+                        <p>Design must hold that the human is the creative subject. AI should focus on sparking
+                            inspiration and reducing repetitive labor — not replacing human emotional expression.</p>
+                    </div>
+                    <div class="reflection-card">
+                        <h3>Restrained Technical Intervention</h3>
+                        <p>Embedding AI into Channels' stable user path must follow a "seamless-integration" principle —
+                            avoid feature pile-up that weighs down interaction, and preserve WeChat's characteristic
+                            simplicity and restraint.</p>
+                    </div>
+                    <div class="reflection-card">
+                        <h3>Continuously Evolving Semantic Understanding</h3>
+                        <p>The current solution relies on powerful multimodal large models. Future iterations should pay
+                            closer attention to AI's aesthetic precision in vertical domains (e.g., specific intangible
+                            cultural heritage and life skills).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-project-section">
+                <h1 style="font-size: 24px;">More Projects</h1>
+                <div class="next-projects-container">
+                    <a class="next-project-card" href="/projects/albertplus">
+                        <div class="next-project-image">
+                            <img src="/assets/images/covers/albertplus.png" alt="Albert Plus">
+                        </div>
+                        <div class="next-project-content">
+                            <h2>Albert Plus</h2>
+                            <p>A redesigned companion for NYU's Albert course system.</p>
+                        </div>
+                    </a>
+                    <a class="next-project-card" href="/projects/intertabs">
+                        <div class="next-project-image">
+                            <img src="/assets/images/covers/intertabs.webp" alt="interTabs">
+                        </div>
+                        <div class="next-project-content">
+                            <h2>interTabs</h2>
+                            <p>An AI-powered Chrome extension that syncs your research across tabs and sessions.</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <%- include('../components/footer.ejs') %>
+
+            <script src="/js/script.js"></script>
+            <script src="/js/project.js"></script>
+            <script>
+                (function () {
+                    const toggle = document.querySelector('.lang-toggle');
+                    const buttons = document.querySelectorAll('.lang-toggle button');
+                    const slides = document.querySelectorAll('.slides-gallery img[data-slide]');
+                    const apply = (lang) => {
+                        if (toggle) toggle.dataset.active = lang;
+                        buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+                        slides.forEach(img => {
+                            img.src = `/assets/images/projects/wechat-videohao/${lang}/slide-${img.dataset.slide}.png`;
+                        });
+                    };
+                    buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+
+                    const slideObserver = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('in-view');
+                                slideObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+                    slides.forEach(img => slideObserver.observe(img));
+                })();
+            </script>
+</body>
+
+</html>

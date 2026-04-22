@@ -12,7 +12,7 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
 
     sections.forEach(function (el) {
         var rect = el.getBoundingClientRect();

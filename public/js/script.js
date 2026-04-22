@@ -369,16 +369,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setActive(0);
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const idx = sections.indexOf(entry.target);
-                if (idx !== -1) setActive(idx);
-            }
-        });
-    }, { threshold: 0.15, rootMargin: '-10% 0px -55% 0px' });
+    // Pick the current section by finding the last one whose top has scrolled
+    // past a line 25% down the viewport. This handles sections taller than the
+    // viewport (e.g., DESIGN PROPOSAL) where IntersectionObserver thresholds fail.
+    function updateActiveSection() {
+        const line = window.innerHeight * 0.25;
+        let idx = 0;
+        for (let i = 0; i < sections.length; i++) {
+            if (sections[i].getBoundingClientRect().top - line <= 0) idx = i;
+            else break;
+        }
+        setActive(idx);
+    }
 
-    sections.forEach(s => observer.observe(s));
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+    updateActiveSection();
 
     const h1 = document.querySelector('.content h1');
     const footer = document.querySelector('.next-project-section') || document.querySelector('footer');
