@@ -40,6 +40,9 @@ app.get('/projects/intertabs', (request, response) => {
     response.render('projects/intertabs');
 });
 
+app.get('/projects/wechatchannels', (request, response) => {
+    response.render('projects/kramerkart');
+});
 app.get('/projects/paletteu', (request, response) => {
     response.render('projects/paletteu');
 });

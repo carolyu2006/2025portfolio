@@ -54,8 +54,8 @@ app.get('/projects/albertplus', (request, response) => {
     response.render('projects/albertplus');
 });
 
-app.get('/projects/wechatvideohao', (request, response) => {
-    response.render('projects/wechatvideohao');
+app.get('/projects/wechatchannels', (request, response) => {
+    response.render('projects/wechatchannels');
 });
 
 // Only listen if not in Vercel environment
