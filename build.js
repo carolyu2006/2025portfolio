@@ -14,6 +14,7 @@ const routes = [
     { template: 'projects/everstream', output: 'projects/everstream/index.html' },
     { template: 'projects/albertplus', output: 'projects/albertplus/index.html' },
     { template: 'projects/orangobranding', output: 'projects/orangobranding/index.html' },
+    { template: 'projects/wechatchannels', output: 'projects/wechatchannels/index.html' },
 ];
 
 // Create dist directory
