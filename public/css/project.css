@@ -178,6 +178,12 @@ section h2 {
     gap: 10px;
 }
 
+.overview-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
 .overview-content-container {
     display: flex;
     flex-direction: column;
