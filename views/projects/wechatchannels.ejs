@@ -124,7 +124,7 @@
 <body>
     <%- include('../components/header-new.ejs') %>
 
-        <img class="hero-image" src="/assets/images/projects/wechat-videohao/cover.png"
+        <img class="hero-image" src="/assets/images/projects/wechat-videohao/cover.webp"
             alt="WeChat Channels AI case study cover">
 
         <div class="content">
@@ -188,7 +188,7 @@
                 </div>
                 <div class="slides-gallery">
                     <% for (let i=1; i <=13; i++) { %>
-                        <img data-slide="<%= i %>" src="/assets/images/projects/wechat-videohao/en/slide-<%= i %>.png"
+                        <img data-slide="<%= i %>" src="/assets/images/projects/wechat-videohao/en/slide-<%= i %>.webp"
                             alt="WeChat Channels AI slide <%= i %>">
                         <% } %>
                 </div>
@@ -222,7 +222,7 @@
                 <div class="next-projects-container">
                     <a class="next-project-card" href="/projects/albertplus">
                         <div class="next-project-image">
-                            <img src="/assets/images/covers/albertplus.png" alt="Albert Plus">
+                            <img src="/assets/images/covers/albertplus.webp" alt="Albert Plus">
                         </div>
                         <div class="next-project-content">
                             <h2>Albert Plus</h2>
@@ -255,7 +255,7 @@
                         if (toggle) toggle.dataset.active = lang;
                         buttons.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
                         slides.forEach(img => {
-                            img.src = `/assets/images/projects/wechat-videohao/${lang}/slide-${img.dataset.slide}.png`;
+                            img.src = `/assets/images/projects/wechat-videohao/${lang}/slide-${img.dataset.slide}.webp`;
                         });
                     };
                     buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
